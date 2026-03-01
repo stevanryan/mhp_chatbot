@@ -1,0 +1,5 @@
+timestamp,session_id,event_type,user_query,matched_id,similarity_score,bot_reply,total_points,badge,extra
+2026-02-28T16:12:28.227618,54e15bc2-e1b5-4b1d-9ea9-ddf9bb90e333,chat,hi,,0.0,"Sorry, I could not find a suitable answer. Please try another keyword such as opening hours, facilities, mini hydropower, turbine, generator, or quiz.",0,New Visitor,fallback
+2026-02-28T16:12:34.920302,54e15bc2-e1b5-4b1d-9ea9-ddf9bb90e333,chat,turbine,M003,0.5449,The turbine converts the energy of flowing water into rotational mechanical energy.,10,New Visitor,similarity
+2026-02-28T16:12:38.502881,54e15bc2-e1b5-4b1d-9ea9-ddf9bb90e333,chat,hydropower,M005,1.0,"Mini hydropower output is mainly affected by water flow rate, water head, and the efficiency of the turbine-generator system.",25,New Visitor,keyword
+2026-02-28T16:12:42.706675,54e15bc2-e1b5-4b1d-9ea9-ddf9bb90e333,chat,hydro,,0.0,"Sorry, I could not find a suitable answer. Please try another keyword such as opening hours, facilities, mini hydropower, turbine, generator, or quiz.",25,New Visitor,fallback
