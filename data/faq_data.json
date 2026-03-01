@@ -2,121 +2,121 @@
   {
     "id": "W001",
     "category": "tourism",
-    "question": "What are the opening hours?",
-    "keywords": ["opening hours", "open", "close", "schedule", "operating hours"],
-    "answer": "The tourism site is open daily from 08:00 to 17:00. Hours may change on public holidays or during severe weather.",
+    "question": "Jam berapa tempat wisata ini buka?",
+    "keywords": ["jam buka", "buka", "tutup", "jadwal", "jam operasional"],
+    "answer": "Tempat wisata ini buka setiap hari dari pukul 08:00 hingga 17:00. Jam operasional dapat berubah pada hari libur nasional atau saat cuaca buruk.",
     "points": 5
   },
   {
     "id": "W002",
     "category": "tourism",
-    "question": "What facilities are available?",
-    "keywords": ["facilities", "toilet", "parking", "rest area", "mushola", "food stall"],
-    "answer": "Available facilities include parking, toilets, rest areas, and an information point. The exact facilities may vary depending on site conditions.",
+    "question": "Fasilitas apa saja yang tersedia?",
+    "keywords": ["fasilitas", "toilet", "parkir", "rest area", "mushola", "warung"],
+    "answer": "Fasilitas yang tersedia meliputi tempat parkir, toilet, area istirahat, dan pusat informasi. Fasilitas yang ada mungkin bervariasi tergantung kondisi lokasi.",
     "points": 5
   },
   {
     "id": "W003",
     "category": "tourism",
-    "question": "What safety rules should visitors follow?",
-    "keywords": ["safety", "rules", "danger", "safe", "warning", "forbidden"],
-    "answer": "Visitors should avoid slippery areas, stay away from technical equipment without permission, and follow signs and staff instructions at all times.",
+    "question": "Aturan keselamatan apa yang harus diikuti pengunjung?",
+    "keywords": ["keselamatan", "aturan", "bahaya", "aman", "peringatan", "dilarang"],
+    "answer": "Pengunjung harus menghindari area yang licin, menjauh dari peralatan teknis tanpa izin, dan mematuhi rambu-rambu serta instruksi staf setiap saat.",
     "points": 10
   },
   {
     "id": "W004",
     "category": "tourism",
-    "question": "Why is this site suitable for energy education?",
-    "keywords": ["energy education", "edutourism", "suitable", "learning", "tourism education"],
-    "answer": "This site combines a natural water attraction with a mini hydropower system, so visitors can enjoy nature while learning how flowing water can be converted into electricity.",
+    "question": "Mengapa lokasi ini cocok untuk edukasi energi?",
+    "keywords": ["edukasi energi", "edu-wisata", "cocok", "belajar", "wisata edukasi"],
+    "answer": "Lokasi ini menggabungkan daya tarik alam perairan dengan sistem pembangkit listrik tenaga mikro hidro (PLTMH), sehingga pengunjung dapat menikmati alam sambil belajar bagaimana air yang mengalir dapat diubah menjadi listrik.",
     "points": 10
   },
   {
     "id": "W005",
     "category": "tourism",
-    "question": "How can visitors help protect the environment?",
-    "keywords": ["environment", "protect", "clean", "trash", "conservation", "keep clean"],
-    "answer": "Visitors can help by keeping the area clean, avoiding littering, respecting safety boundaries, and not damaging plants or equipment.",
+    "question": "Bagaimana pengunjung dapat membantu melindungi lingkungan?",
+    "keywords": ["lingkungan", "melindungi", "bersih", "sampah", "konservasi", "jaga kebersihan"],
+    "answer": "Pengunjung dapat membantu dengan menjaga kebersihan area, tidak membuang sampah sembarangan, menghormati batas aman, dan tidak merusak tanaman atau peralatan.",
     "points": 5
   },
   {
     "id": "M001",
     "category": "mhp",
-    "question": "What is mini hydropower?",
-    "keywords": ["mini hydropower", "mhp", "micro hydro", "definition", "what is pltmh"],
-    "answer": "Mini hydropower is a small-scale system that uses flowing water to generate electricity.",
+    "question": "Apa itu PLTMH (Pembangkit Listrik Tenaga Mikro Hidro)?",
+    "keywords": ["pltmh", "mikro hidro", "definisi", "apa itu pltmh", "pembangkit listrik"],
+    "answer": " PLTMH adalah sistem pembangkit listrik berskala kecil yang menggunakan aliran air untuk menghasilkan listrik.",
     "points": 10
   },
   {
     "id": "M002",
     "category": "mhp",
-    "question": "How does mini hydropower work?",
-    "keywords": ["how does it work", "working principle", "process", "turbine", "generator"],
-    "answer": "Water flow rotates a turbine. The turbine then drives a generator, which converts mechanical energy into electrical energy.",
+    "question": "Bagaimana cara kerja PLTMH?",
+    "keywords": ["cara kerja", "prinsip kerja", "proses", "turbin", "generator"],
+    "answer": " Aliran air memutar turbin. Turbin tersebut kemudian menggerakkan generator, yang berfungsi mengubah energi mekanik menjadi energi listrik.",
     "points": 10
   },
   {
     "id": "M003",
     "category": "mhp",
-    "question": "What is the function of the turbine?",
-    "keywords": ["function of turbine", "turbine", "role of turbine", "component"],
-    "answer": "The turbine converts the energy of flowing water into rotational mechanical energy.",
+    "question": "Apa fungsi dari turbin?",
+    "keywords": ["fungsi turbin", "turbin", "peran turbin", "komponen"],
+    "answer": " Turbin berfungsi mengubah energi dari aliran air menjadi energi mekanik putar.",
     "points": 10
   },
   {
     "id": "M004",
     "category": "mhp",
-    "question": "What is the function of the generator?",
-    "keywords": ["function of generator", "generator", "role of generator", "component"],
-    "answer": "The generator converts the turbine's rotational energy into electrical energy.",
+    "question": "Apa fungsi dari generator?",
+    "keywords": ["fungsi generator", "generator", "peran generator", "komponen"],
+    "answer": " Generator berfungsi mengubah energi putar dari turbin menjadi energi listrik.",
     "points": 10
   },
   {
     "id": "M005",
     "category": "mhp",
-    "question": "What factors affect mini hydropower output?",
-    "keywords": ["factors", "output", "power", "head", "flow rate", "discharge"],
-    "answer": "Mini hydropower output is mainly affected by water flow rate, water head, and the efficiency of the turbine-generator system.",
+    "question": "Faktor apa saja yang memengaruhi hasil listrik PLTMH?",
+    "keywords": ["faktor", "hasil", "daya", "head", "debit air", "arus air"],
+    "answer": "Hasil listrik PLTMH terutama dipengaruhi oleh debit air (kecepatan aliran), tinggi jatuh air (head), dan tingkat efisiensi dari sistem turbin-generator itu sendiri.",
     "points": 15
   },
   {
     "id": "M006",
     "category": "mhp",
-    "question": "What are the benefits of mini hydropower?",
-    "keywords": ["benefits", "advantages", "renewable energy", "local electricity"],
-    "answer": "Mini hydropower provides renewable electricity, supports local energy needs, and can be a practical example of sustainable technology.",
+    "question": "Apa saja manfaat PLTMH?",
+    "keywords": ["manfaat", "keuntungan", "energi terbarukan", "listrik lokal"],
+    "answer": "PLTMH menyediakan listrik yang terbarukan, mendukung kebutuhan energi masyarakat lokal, dan dapat menjadi contoh praktis dari pemanfaatan teknologi yang berkelanjutan.",
     "points": 10
   },
   {
     "id": "M007",
     "category": "mhp",
-    "question": "Is mini hydropower the same as a large dam?",
-    "keywords": ["same as dam", "difference", "large dam", "scale"],
-    "answer": "No. Both use water to produce electricity, but mini hydropower operates on a much smaller scale and is often intended for local use.",
+    "question": "Apakah PLTMH sama dengan bendungan raksasa?",
+    "keywords": ["sama dengan bendungan", "perbedaan", "bendungan besar", "skala"],
+    "answer": "Tidak. Keduanya memang menggunakan air untuk memproduksi listrik, namun PLTMH beroperasi pada skala yang jauh lebih kecil dan biasanya ditujukan untuk menerangi area lokal sekitarnya saja.",
     "points": 10
   },
   {
     "id": "M008",
     "category": "mhp",
-    "question": "Why is mini hydropower good for tourism education?",
-    "keywords": ["good for tourism education", "education", "tourism", "learning value"],
-    "answer": "It helps visitors understand renewable energy through a real example that can be observed directly in a natural environment.",
+    "question": "Mengapa PLTMH bagus untuk wisata edukasi?",
+    "keywords": ["bagus untuk wisata edukasi", "edukasi", "wisata", "nilai pembelajaran"],
+    "answer": "PLTMH membantu pengunjung untuk lebih memahami energi terbarukan melalui contoh nyata yang bisa langsung diamati di lingkungan alam sekitar.",
     "points": 10
   },
   {
     "id": "G001",
     "category": "gamification",
-    "question": "How do I earn points and badges?",
-    "keywords": ["points", "badges", "score", "levels", "earn points"],
-    "answer": "You earn points by asking matched FAQ questions and by answering quiz questions correctly. Higher points unlock higher badges.",
+    "question": "Bagaimana cara mendapatkan poin dan lencana?",
+    "keywords": ["poin", "lencana", "skor", "level", "dapat poin"],
+    "answer": "Anda bisa mendapatkan poin dengan menanyakan hal-hal yang sesuai dengan FAQ dan dengan menjawab pertanyaan kuis secara benar. Semakin tinggi poin Anda, semakin tinggi lencana yang akan terbuka.",
     "points": 5
   },
   {
     "id": "G002",
     "category": "gamification",
-    "question": "What can I do in this chatbot?",
-    "keywords": ["features", "what can i do", "help", "menu", "functions"],
-    "answer": "You can ask questions about the site and mini hydropower, read a short learning summary, take a quiz, and track your points and badge.",
+    "question": "Apa yang bisa saya lakukan di chatbot ini?",
+    "keywords": ["fitur", "apa yang bisa dilakukan", "bantuan", "menu", "fungsi"],
+    "answer": "Anda dapat bertanya tentang lokasi wisata dan PLTMH, membaca ringkasan singkat untuk belajar, mengikuti kuis, serta melacak poin dan lencana Anda.",
     "points": 5
   }
 ]

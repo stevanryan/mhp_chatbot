@@ -1,72 +1,72 @@
 [
   {
     "id": "Q01",
-    "question": "What is the main energy source in mini hydropower?",
-    "options": ["Wind", "Flowing water", "Solar heat", "Biomass"],
+    "question": "Apa sumber energi utama pada PLTMH (Pembangkit Listrik Tenaga Mikro Hidro)?",
+    "options": ["Angin", "Aliran air", "Panas matahari", "Biomassa"],
     "correct_index": 1,
-    "explanation": "Mini hydropower uses the energy of flowing water to produce electricity."
+    "explanation": "PLTMH menggunakan energi dari aliran air untuk menghasilkan listrik."
   },
   {
     "id": "Q02",
-    "question": "Which component rotates because of water flow?",
-    "options": ["Battery", "Turbine", "Solar panel", "Controller"],
+    "question": "Komponen apa yang berputar akibat aliran air?",
+    "options": ["Baterai", "Turbin", "Panel surya", "Pengontrol"],
     "correct_index": 1,
-    "explanation": "The turbine rotates when driven by flowing water."
+    "explanation": "Turbin akan berputar ketika didorong oleh aliran air."
   },
   {
     "id": "Q03",
-    "question": "What is the function of a generator in mini hydropower?",
-    "options": ["To store water", "To convert mechanical energy into electricity", "To increase flow rate", "To cool the turbine"],
+    "question": "Apa fungsi dari generator pada sistem PLTMH?",
+    "options": ["Untuk menyimpan air", "Untuk mengubah energi mekanik menjadi listrik", "Untuk meningkatkan debit air", "Untuk mendinginkan turbin"],
     "correct_index": 1,
-    "explanation": "The generator converts rotational mechanical energy into electrical energy."
+    "explanation": "Generator berfungsi mengubah energi mekanik berupa putaran menjadi energi listrik."
   },
   {
     "id": "Q04",
-    "question": "Which factor strongly affects mini hydropower output?",
-    "options": ["Water color", "Flow rate", "Air humidity", "Cloud shape"],
+    "question": "Faktor apa yang sangat memengaruhi daya yang dihasilkan PLTMH?",
+    "options": ["Warna air", "Debit air", "Kelembapan udara", "Bentuk awan"],
     "correct_index": 1,
-    "explanation": "Flow rate is one of the main factors affecting the power output of mini hydropower."
+    "explanation": "Debit air (kecepatan dan volume aliran air) adalah salah satu faktor utama yang memengaruhi hasil listrik PLTMH."
   },
   {
     "id": "Q05",
-    "question": "Why is mini hydropower considered renewable energy?",
-    "options": ["Because it uses fuel", "Because it uses flowing water", "Because it uses batteries", "Because it uses plastic"],
+    "question": "Mengapa PLTMH dianggap sebagai energi terbarukan?",
+    "options": ["Karena menggunakan bahan bakar", "Karena menggunakan aliran air", "Karena menggunakan baterai", "Karena menggunakan plastik"],
     "correct_index": 1,
-    "explanation": "Mini hydropower relies on the natural movement of water, which is a renewable source."
+    "explanation": "PLTMH bergantung pada pergerakan air alami, yang mana merupakan sumber energi yang dapat diperbarui secara terus-menerus."
   },
   {
     "id": "Q06",
-    "question": "What should visitors do near technical equipment?",
-    "options": ["Touch all parts to learn faster", "Stay away unless permitted", "Sit on the equipment", "Move cables if needed"],
+    "question": "Apa yang harus dilakukan pengunjung saat berada di dekat peralatan teknis?",
+    "options": ["Menyentuh semua bagian agar cepat belajar", "Menjauh kecuali jika diizinkan", "Duduk di atas peralatan", "Memindahkan kabel jika perlu"],
     "correct_index": 1,
-    "explanation": "Visitors should keep a safe distance from technical equipment unless guided by staff."
+    "explanation": "Pengunjung harus menjaga jarak aman dari peralatan teknis kecuali jika sedang diarahkan oleh staf untuk alasan keselamatan."
   },
   {
     "id": "Q07",
-    "question": "Mini hydropower is usually designed for ...",
-    "options": ["Only very large cities", "Local or small-scale electricity needs", "Airplanes", "Ocean shipping"],
+    "question": "PLTMH biasanya dirancang untuk ...",
+    "options": ["Hanya untuk kota-kota metropolitan", "Kebutuhan listrik lokal atau skala kecil", "Pesawat terbang", "Pelayaran kapal laut"],
     "correct_index": 1,
-    "explanation": "Mini hydropower is commonly used for local and small-scale electricity generation."
+    "explanation": "PLTMH umumnya digunakan untuk pembangkit listrik skala kecil guna memenuhi kebutuhan energi masyarakat lokal sekitarnya."
   },
   {
     "id": "Q08",
-    "question": "What makes this tourism site educational?",
-    "options": ["It only has food stalls", "It combines nature with mini hydropower learning", "It has no information at all", "It is indoors"],
+    "question": "Apa yang membuat lokasi wisata ini bersifat edukatif?",
+    "options": ["Karena hanya menjual makanan", "Karena menggabungkan wisata alam dengan pembelajaran PLTMH", "Karena tidak ada papan informasi sama sekali", "Karena letaknya di dalam gedung"],
     "correct_index": 1,
-    "explanation": "The site supports learning because visitors can see renewable energy concepts in a real natural setting."
+    "explanation": "Lokasi ini mendukung pembelajaran karena pengunjung dapat melihat langsung bagaimana konsep energi terbarukan bekerja di lingkungan alam yang nyata."
   },
   {
     "id": "Q09",
-    "question": "What is one benefit of gamification in this chatbot?",
-    "options": ["It removes all learning content", "It can increase engagement and motivation", "It stops users from asking questions", "It replaces the internet"],
+    "question": "Apa salah satu manfaat gamifikasi dalam chatbot ini?",
+    "options": ["Menghapus semua materi pelajaran", "Dapat meningkatkan keterlibatan dan motivasi", "Mencegah pengguna untuk bertanya", "Menggantikan peran internet"],
     "correct_index": 1,
-    "explanation": "Points, badges, and quizzes help keep users engaged and interested in learning."
+    "explanation": "Poin, lencana, dan sistem kuis membantu agar pengguna tetap fokus, terlibat, dan tertarik untuk terus belajar."
   },
   {
     "id": "Q10",
-    "question": "How can visitors help protect the tourism site?",
-    "options": ["By littering less", "By keeping the area clean and following rules", "By ignoring signs", "By stepping over barriers"],
+    "question": "Bagaimana pengunjung dapat membantu melindungi area tempat wisata?",
+    "options": ["Dengan membuang sedikit sampah ke sungai", "Dengan menjaga kebersihan area dan mematuhi aturan", "Dengan mengabaikan rambu-rambu", "Dengan melompati pagar pembatas"],
     "correct_index": 1,
-    "explanation": "Responsible visitor behavior helps protect both the environment and the learning facilities."
+    "explanation": "Perilaku pengunjung yang bertanggung jawab akan sangat membantu dalam melindungi kelestarian lingkungan dan keamanan fasilitas pembelajaran."
   }
 ]
