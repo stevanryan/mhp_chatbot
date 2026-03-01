@@ -51,7 +51,8 @@ class FAQMatcher:
             }
         return {
             "id": None,
-            "answer": "Sorry, I could not find a suitable answer. Please try another keyword such as opening hours, facilities, mini hydropower, turbine, generator, or quiz.",
+            # Teks di bawah ini diubah ke Bahasa Indonesia
+            "answer": "Maaf, saya tidak dapat menemukan jawaban yang sesuai. Silakan coba kata kunci lain seperti jam buka, fasilitas, PLTMH, turbin, generator, atau kuis.",
             "score": 0.0,
             "points": 0,
             "match_type": "fallback",
@@ -62,7 +63,8 @@ class FAQMatcher:
         if not q:
             return {
                 "id": None,
-                "answer": "Please type a question first.",
+                # Teks di bawah ini diubah ke Bahasa Indonesia
+                "answer": "Silakan ketik pertanyaan terlebih dahulu.",
                 "score": 0.0,
                 "points": 0,
                 "match_type": "empty",

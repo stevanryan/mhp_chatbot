@@ -11,13 +11,51 @@ QUIZ_PATH = "data/quiz_data.json"
 LOG_PATH = "data/interaction_logs.csv"
 
 st.set_page_config(
-    page_title="MHP Edu-Tourism Chatbot",
-    page_icon="💧",
+    page_title="Chatbot Edu-Wisata PLTMH",
+    page_icon="💧", # Ini ikon untuk tab browser, biarkan saja atau ganti ke file gambar logo Anda
     layout="wide",
 )
 
-st.title("💧 Educational Tourism Chatbot for Mini Hydropower")
-st.caption("FAQ retrieval + TF-IDF similarity + gamification")
+# --- MULAI KODE BANNER JUDUL ---
+# URL ini mengarah langsung ke gambar air terjun yang indah di Unsplash
+bg_img_url = "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=2000&auto=format&fit=crop"
+
+custom_css = f"""
+<style>
+.title-banner {{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('{bg_img_url}');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}}
+.title-banner h1 {{
+    color: white !important;
+    margin: 0;
+    font-size: 2.6rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}}
+.title-banner p {{
+    color: #e0e0e0 !important;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-style: italic;
+}}
+</style>
+
+<div class="title-banner">
+    <h1>Chatbot Edu-Wisata Pembangkit Listrik Tenaga Mikro Hidro (PLTMH)</h1>
+    <p>Pencarian FAQ • Kemiripan TF-IDF • Gamifikasi</p>
+</div>
+"""
+
+# Menampilkan banner menggunakan HTML/CSS
+st.markdown(custom_css, unsafe_allow_html=True)
+# --- AKHIR KODE BANNER JUDUL ---
 
 faq_items = load_faq_json(FAQ_PATH)
 quiz_items = load_quiz_json(QUIZ_PATH)
@@ -30,72 +68,80 @@ if not st.session_state.messages:
         {
             "role": "assistant",
             "content": (
-                "Hello! Ask me about the tourism site, mini hydropower, safety, or the quiz. "
-                "Example questions: 'What is mini hydropower?' or 'What safety rules should visitors follow?'"
+                "Halo! Tanyakan kepada saya tentang lokasi wisata, pembangkit listrik mikro hidro (PLTMH), keselamatan, atau kuis. "
+                "Contoh pertanyaan: 'Apa itu PLTMH?' atau 'Apa aturan keselamatan yang harus diikuti pengunjung?'"
             ),
         }
     ]
 
-# ---------- Top status row ----------
+# ---------- Baris status atas ----------
+# Menambahkan sedikit spasi vertikal agar rapi
+st.write("")
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.metric("Points", st.session_state.points)
+    st.metric("Poin", st.session_state.points)
 with col2:
-    st.metric("Badge", get_badge(st.session_state.points))
+    st.metric("Lencana", get_badge(st.session_state.points))
 with col3:
-    st.metric("Quiz Progress", f"{min(st.session_state.quiz_index, len(quiz_items))}/{len(quiz_items)}")
+    st.metric("Progres Kuis", f"{min(st.session_state.quiz_index, len(quiz_items))}/{len(quiz_items)}")
 with col4:
-    if st.button("Reset Session"):
+    # PERBAIKAN: Menambahkan spasi kosong agar tombol sejajar dengan angka metrik di sebelahnya
+    st.write("")
+    st.write("")
+    if st.button("Mulai Ulang Sesi", use_container_width=True):
         reset_chat_and_game()
         st.session_state.messages = [
             {
                 "role": "assistant",
-                "content": "Session reset. Ask me something about the site or mini hydropower.",
+                "content": "Sesi telah dimulai ulang. Tanyakan sesuatu tentang lokasi wisata atau PLTMH kepada saya.",
             }
         ]
         st.rerun()
 
-# ---------- Main content ----------
+st.divider()
+
+# ---------- Konten utama ----------
 left, right = st.columns([2.2, 1.2])
 
 with left:
-    st.subheader("Chat")
-    chat_container = st.container(border=True)
+    st.subheader("Obrolan")
+    # PERBAIKAN: Menambahkan height=500 agar kotak obrolan bisa di-scroll dan tidak memenuhi layar ke bawah
+    chat_container = st.container(height=500, border=True)
     with chat_container:
         for msg in st.session_state.messages:
             with st.chat_message(msg["role"]):
                 st.write(msg["content"])
 
 with right:
-    st.subheader("Learn & Quiz")
+    st.subheader("Belajar & Kuis")
 
-    with st.expander("📘 Mini Hydropower Summary", expanded=True):
+    with st.expander("📘 Ringkasan PLTMH", expanded=True):
         st.write(
-            "Mini hydropower is a small-scale electricity system that uses flowing water. "
-            "Water moves a turbine, the turbine drives a generator, and the generator produces electricity."
+            "PLTMH (Pembangkit Listrik Tenaga Mikro Hidro) adalah sistem kelistrikan skala kecil yang memanfaatkan aliran air. "
+            "Air menggerakkan turbin, turbin memutar generator, dan generator tersebut menghasilkan listrik."
         )
         st.write(
-            "This tourism site is educational because visitors can enjoy nature while learning how renewable energy works in practice."
+            "Lokasi wisata ini bersifat edukatif karena pengunjung dapat menikmati alam sambil belajar secara langsung bagaimana energi terbarukan bekerja."
         )
 
-    with st.expander("🧠 Quiz", expanded=True):
+    with st.expander("🧠 Kuis", expanded=True):
         if not st.session_state.quiz_finished:
             current_idx = st.session_state.quiz_index
             if current_idx < len(quiz_items):
                 q = quiz_items[current_idx]
-                st.write(f"**Question {current_idx + 1}**")
+                st.write(f"**Pertanyaan {current_idx + 1}**")
                 st.write(q["question"])
 
                 choice = st.radio(
-                    "Choose one answer:",
+                    "Pilih salah satu jawaban:",
                     q["options"],
                     key=f"quiz_choice_{current_idx}",
                     index=None,
                 )
 
-                if st.button("Submit Quiz Answer", type="primary"):
+                if st.button("Kirim Jawaban Kuis", type="primary"):
                     if choice is None:
-                        st.warning("Please choose an answer before submitting.")
+                        st.warning("Harap pilih jawaban sebelum mengirim.")
                     else:
                         correct_option = q["options"][q["correct_index"]]
                         is_correct = choice == correct_option
@@ -113,16 +159,16 @@ with right:
                             user_query=q["question"],
                             matched_id=q["id"],
                             similarity_score=1.0 if is_correct else 0.0,
-                            bot_reply=f"Selected: {choice} | Correct: {correct_option}",
+                            bot_reply=f"Dipilih: {choice} | Benar: {correct_option}",
                             total_points=st.session_state.points,
                             badge=get_badge(st.session_state.points),
                             extra=q["explanation"],
                         )
 
                         if is_correct:
-                            st.success("Correct! +20 points")
+                            st.success("Benar! +20 poin")
                         else:
-                            st.error(f"Incorrect. Correct answer: {correct_option}")
+                            st.error(f"Salah. Jawaban yang benar adalah: {correct_option}")
                         st.info(q["explanation"])
 
                         st.session_state.quiz_index += 1
@@ -133,27 +179,27 @@ with right:
                 st.session_state.quiz_finished = True
 
         if st.session_state.quiz_finished:
-            st.success("Quiz completed!")
-            st.write(f"Your quiz score: **{st.session_state.quiz_score}/{len(quiz_items)}**")
-            st.write(f"Your current badge: **{get_badge(st.session_state.points)}**")
-            if st.button("Restart Quiz"):
+            st.success("Kuis selesai!")
+            st.write(f"Skor kuis Anda: **{st.session_state.quiz_score}/{len(quiz_items)}**")
+            st.write(f"Lencana Anda saat ini: **{get_badge(st.session_state.points)}**")
+            if st.button("Mulai Ulang Kuis"):
                 st.session_state.quiz_index = 0
                 st.session_state.quiz_answered_ids = set()
                 st.session_state.quiz_score = 0
                 st.session_state.quiz_finished = False
                 st.rerun()
 
-    with st.expander("ℹ️ Suggested Questions"):
+    with st.expander("ℹ️ Saran Pertanyaan"):
         st.markdown(
-            "- What is mini hydropower?\n"
-            "- How does mini hydropower work?\n"
-            "- What are the benefits of mini hydropower?\n"
-            "- What facilities are available?\n"
-            "- What safety rules should visitors follow?"
+            "- Apa itu PLTMH?\n"
+            "- Bagaimana cara kerja PLTMH?\n"
+            "- Apa saja manfaat PLTMH?\n"
+            "- Fasilitas apa saja yang tersedia di sini?\n"
+            "- Aturan keselamatan apa yang harus diikuti pengunjung?"
         )
 
-# chat_input should stay in the main area (not sidebar/forms/tabs for best compatibility)
-user_query = st.chat_input("Ask your question here...")
+# chat_input tetap berada di area utama (bukan di sidebar/form/tab untuk kompatibilitas terbaik)
+user_query = st.chat_input("Ketik pertanyaan Anda di sini...")
 if user_query:
     st.session_state.messages.append({"role": "user", "content": user_query})
 
@@ -162,7 +208,7 @@ if user_query:
     matched_id = result.get("id") or ""
     score = result.get("score", 0.0)
 
-    # Award points once per matched FAQ ID
+    # Berikan poin hanya satu kali per ID FAQ yang cocok
     if matched_id and matched_id not in st.session_state.answered_faq_ids:
         add_points(result.get("points", 5))
         st.session_state.answered_faq_ids.add(matched_id)
@@ -184,10 +230,10 @@ if user_query:
 
     st.rerun()
 
-# Optional log preview
-with st.expander("📄 Preview Interaction Logs (optional)"):
+# Pratinjau log opsional
+with st.expander("📄 Pratinjau Log Interaksi (Opsional)"):
     try:
         logs = pd.read_csv(LOG_PATH)
         st.dataframe(logs.tail(20), use_container_width=True)
     except FileNotFoundError:
-        st.info("No logs yet. Start chatting or answer the quiz to generate logs.")
+        st.info("Belum ada log. Mulai mengobrol atau jawab kuis untuk membuat log interaksi.")
