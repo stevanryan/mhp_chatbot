@@ -7,8 +7,8 @@ from utils.matcher import FAQMatcher
 from utils.gamification import init_game_state, add_points, get_badge, reset_chat_and_game
 from utils.logger import log_interaction
 
-FAQ_PATH = "data/faq_data.json"
-QUIZ_PATH = "data/quiz_data.json"
+FAQ_PATH = "data/faq_data2.json"
+QUIZ_PATH = "data/quiz_data2.json"
 LOG_PATH = "data/interaction_logs.csv"
 
 st.set_page_config(

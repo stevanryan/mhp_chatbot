@@ -1,0 +1,142 @@
+[
+  {
+    "id": "Q01",
+    "question": "Apa sumber energi utama dalam mini hydropower?",
+    "options": ["Angin", "Air mengalir", "Panas matahari", "Biomassa"],
+    "correct_index": 1,
+    "explanation": "Mini hydropower menggunakan energi dari air yang mengalir untuk menghasilkan listrik."
+  },
+  {
+    "id": "Q02",
+    "question": "Komponen mana yang berputar karena aliran air?",
+    "options": ["Baterai", "Turbine", "Panel surya", "Kontroler"],
+    "correct_index": 1,
+    "explanation": "Turbine berputar karena aliran air."
+  },
+  {
+    "id": "Q03",
+    "question": "Apa fungsi generator dalam mini hydropower?",
+    "options": ["Untuk menyimpan air", "Untuk mengubah energi mekanik menjadi listrik", "Untuk meningkatkan laju aliran", "Untuk mendinginkan turbin"],
+    "correct_index": 1,
+    "explanation": "Generator mengubah energi mekanik dari turbin menjadi energi listrik."
+  },
+  {
+    "id": "Q04",
+    "question": "Faktor mana yang paling mempengaruhi output mini hydropower?",
+    "options": ["Warna air", "Laju aliran", "Kelembapan udara", "Bentuk awan"],
+    "correct_index": 1,
+    "explanation": "Laju aliran adalah salah satu faktor utama yang mempengaruhi output daya mini hydropower."
+  },
+  {
+    "id": "Q05",
+    "question": "Mengapa mini hydropower dianggap energi terbarukan?",
+    "options": ["Karena menggunakan bahan bakar", "Karena menggunakan air mengalir", "Karena menggunakan baterai", "Karena menggunakan plastik"],
+    "correct_index": 1,
+    "explanation": "Mini hydropower dianggap energi terbarukan karena menggunakan air yang terus mengalir, yang merupakan sumber daya yang tidak habis."
+  },
+  {
+    "id": "Q06",
+    "question": "Apa yang harus dilakukan pengunjung di dekat peralatan teknis?",
+    "options": ["Sentuh semua bagian untuk belajar lebih cepat", "Tetap jauh kecuali diizinkan", "Duduk di peralatan", "Pindahkan kabel jika diperlukan"],
+    "correct_index": 1,
+    "explanation": "Pengunjung harus menjaga jarak aman dari peralatan teknis kecuali diizinkan oleh staf."
+  },
+  {
+    "id": "Q07",
+    "question": "Mini hydropower biasanya dirancang untuk ...",
+    "options": ["Hanya kota besar", "Kebutuhan listrik lokal atau skala kecil", "Pesawat terbang", "Pengiriman laut"],
+    "correct_index": 1,
+    "explanation": "Mini hydropower biasanya digunakan untuk pembangkit listrik lokal atau skala kecil."
+  },
+  {
+    "id": "Q08",
+    "question": "Apa yang membuat situs wisata ini edukatif?",
+    "options": ["Hanya memiliki kios makanan", "Menggabungkan alam dengan pembelajaran mini hydropower", "Tidak memiliki informasi sama sekali", "Berada di dalam ruangan"],
+    "correct_index": 1,
+    "explanation": "Situs ini mendukung pembelajaran karena pengunjung dapat melihat konsep energi terbarukan dalam lingkungan alami yang nyata."
+  },
+  {
+    "id": "Q09",
+    "question": "Apa salah satu manfaat gamifikasi dalam chatbot ini?",
+    "options": ["itu menghapus semua konten pembelajaran", "dapat meningkatkan keterlibatan dan motivasi", "menghentikan pengguna dari bertanya", "menggantikan internet"],
+    "correct_index": 1,
+    "explanation": "Nilai, lencana, dan kuis membantu menjaga keterlibatan dan minat pengguna dalam belajar."
+  },
+  {
+    "id": "Q10",
+    "question": "Bagaimana pengunjung dapat membantu melindungi situs wisata?",
+    "options": ["Dengan membuang sampah sembarangan", "Dengan menjaga kebersihan dan mengikuti aturan", "Dengan mengabaikan tanda-tanda", "Dengan melangkahi pembatas"],
+    "correct_index": 1,
+    "explanation": "Perilaku pengunjung yang bertanggung jawab membantu melindungi lingkungan dan fasilitas pembelajaran."
+  },
+  {
+    "id": "Q11",
+    "question": "Energi air dalam mini hydropower pertama-tama diubah menjadi energi apa?",
+    "options": ["Energi kimia", "Energi mekanik", "Energi nuklir", "Energi panas bumi"],
+    "correct_index": 1,
+    "explanation": "Aliran air memutar turbin sehingga menghasilkan energi mekanik sebelum diubah menjadi listrik oleh generator."
+  },
+  {
+    "id": "Q12",
+    "question": "Apa peran turbin dalam sistem mini hydropower?",
+    "options": ["Menyimpan listrik", "Mengubah energi air menjadi energi mekanik", "Mengatur suhu air", "Mengalirkan kabel listrik"],
+    "correct_index": 1,
+    "explanation": "Turbin berfungsi mengubah energi kinetik dari air yang mengalir menjadi energi mekanik berupa putaran."
+  },
+  {
+    "id": "Q13",
+    "question": "Mengapa aliran air yang stabil penting dalam mini hydropower?",
+    "options": ["Agar warna air tetap jernih", "Agar listrik yang dihasilkan stabil", "Agar wisatawan lebih banyak", "Agar kolam lebih dalam"],
+    "correct_index": 1,
+    "explanation": "Aliran air yang stabil membantu menghasilkan listrik yang stabil dan konsisten."
+  },
+  {
+    "id": "Q14",
+    "question": "Mini hydropower termasuk dalam kategori energi ...",
+    "options": ["Tak terbarukan", "Terbarukan", "Fosil", "Buatan"],
+    "correct_index": 1,
+    "explanation": "Mini hydropower termasuk energi terbarukan karena memanfaatkan sumber daya air yang terus diperbarui secara alami."
+  },
+  {
+    "id": "Q15",
+    "question": "Apa manfaat edukatif dari melihat sistem mini hydropower secara langsung?",
+    "options": ["Hanya untuk hiburan", "Memahami konsep energi terbarukan secara nyata", "Menggantikan buku pelajaran", "Mengurangi kebutuhan listrik"],
+    "correct_index": 1,
+    "explanation": "Melihat langsung sistem MHP membantu pengunjung memahami konsep energi terbarukan secara lebih konkret."
+  },
+  {
+    "id": "Q16",
+    "question": "Dalam chatbot edukasi, kuis digunakan untuk ...",
+    "options": ["Mengurangi informasi", "Mengukur pemahaman pengguna", "Menghapus skor", "Menghentikan percakapan"],
+    "correct_index": 1,
+    "explanation": "Kuis dalam chatbot membantu mengukur sejauh mana pengguna memahami materi yang diberikan."
+  },
+  {
+    "id": "Q17",
+    "question": "Apa tujuan pemberian poin dalam sistem gamifikasi?",
+    "options": ["Sebagai hiasan", "Meningkatkan motivasi belajar", "Mengurangi pertanyaan", "Menghapus fitur edukasi"],
+    "correct_index": 1,
+    "explanation": "Poin diberikan untuk meningkatkan motivasi dan keterlibatan pengguna dalam proses pembelajaran."
+  },
+  {
+    "id": "Q18",
+    "question": "Apa yang terjadi jika laju aliran air meningkat?",
+    "options": ["Turbin berhenti", "Potensi daya yang dihasilkan meningkat", "Generator rusak otomatis", "Lampu padam"],
+    "correct_index": 1,
+    "explanation": "Semakin besar laju aliran air, semakin besar potensi energi yang dapat dihasilkan."
+  },
+  {
+    "id": "Q19",
+    "question": "Mengapa mini hydropower cocok untuk desa wisata?",
+    "options": ["Membutuhkan bahan bakar mahal", "Skalanya kecil dan ramah lingkungan", "Menghasilkan polusi tinggi", "Memerlukan gedung besar"],
+    "correct_index": 1,
+    "explanation": "Mini hydropower cocok untuk desa wisata karena skalanya kecil, ramah lingkungan, dan sesuai untuk kebutuhan lokal."
+  },
+  {
+    "id": "Q20",
+    "question": "Apa tujuan utama dari wisata edukasi mini hydropower?",
+    "options": ["Hanya menghasilkan listrik", "Meningkatkan pemahaman tentang energi terbarukan", "Mengurangi jumlah pengunjung", "Mengganti pembangkit besar"],
+    "correct_index": 1,
+    "explanation": "Wisata edukasi bertujuan untuk meningkatkan kesadaran dan pemahaman tentang energi terbarukan melalui pengalaman langsung."
+  }
+]
