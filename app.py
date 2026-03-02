@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import base64
 
 from utils.loader import load_faq_json, load_quiz_json
 from utils.matcher import FAQMatcher
@@ -12,13 +13,28 @@ LOG_PATH = "data/interaction_logs.csv"
 
 st.set_page_config(
     page_title="Chatbot Edu-Wisata PLTMH",
-    page_icon="💧", # Ini ikon untuk tab browser, biarkan saja atau ganti ke file gambar logo Anda
+    page_icon="💧", 
     layout="wide",
 )
 
-# --- MULAI KODE BANNER JUDUL ---
-# URL ini mengarah langsung ke gambar air terjun yang indah di Unsplash
-bg_img_url = "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=2000&auto=format&fit=crop"
+
+# Fungsi untuk membaca file lokal dan mengubahnya ke format base64
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+# Path gambar lokal Anda
+img_path = "img/tukbulus.jpg"
+
+try:
+    # Ubah gambar ke base64
+    img_base64 = get_base64_of_bin_file(img_path)
+    # Gunakan format data URI untuk background-image
+    bg_img_url = f"data:image/jpeg;base64,{img_base64}"
+except FileNotFoundError:
+    st.error(f"File gambar tidak ditemukan di path: {img_path}")
+    bg_img_url = "" # Fallback jika gambar tidak ada
 
 custom_css = f"""
 <style>
@@ -48,14 +64,13 @@ custom_css = f"""
 </style>
 
 <div class="title-banner">
-    <h1>Chatbot Edu-Wisata Pembangkit Listrik Tenaga Mikro Hidro (PLTMH)</h1>
+    <h1>Chatbot Edu-Wisata Desa Tuk Bulus Pembangkit Listrik Tenaga Mikro Hidro (PLTMH)</h1>
     <p>Pencarian FAQ • Kemiripan TF-IDF • Gamifikasi</p>
 </div>
 """
 
-# Menampilkan banner menggunakan HTML/CSS
 st.markdown(custom_css, unsafe_allow_html=True)
-# --- AKHIR KODE BANNER JUDUL ---
+
 
 faq_items = load_faq_json(FAQ_PATH)
 quiz_items = load_quiz_json(QUIZ_PATH)
@@ -74,8 +89,7 @@ if not st.session_state.messages:
         }
     ]
 
-# ---------- Baris status atas ----------
-# Menambahkan sedikit spasi vertikal agar rapi
+
 st.write("")
 col1, col2, col3, col4 = st.columns(4)
 with col1:
@@ -85,7 +99,7 @@ with col2:
 with col3:
     st.metric("Progres Kuis", f"{min(st.session_state.quiz_index, len(quiz_items))}/{len(quiz_items)}")
 with col4:
-    # PERBAIKAN: Menambahkan spasi kosong agar tombol sejajar dengan angka metrik di sebelahnya
+
     st.write("")
     st.write("")
     if st.button("Mulai Ulang Sesi", use_container_width=True):
@@ -105,7 +119,6 @@ left, right = st.columns([2.2, 1.2])
 
 with left:
     st.subheader("Obrolan")
-    # PERBAIKAN: Menambahkan height=500 agar kotak obrolan bisa di-scroll dan tidak memenuhi layar ke bawah
     chat_container = st.container(height=500, border=True)
     with chat_container:
         for msg in st.session_state.messages:
@@ -198,7 +211,6 @@ with right:
             "- Aturan keselamatan apa yang harus diikuti pengunjung?"
         )
 
-# chat_input tetap berada di area utama (bukan di sidebar/form/tab untuk kompatibilitas terbaik)
 user_query = st.chat_input("Ketik pertanyaan Anda di sini...")
 if user_query:
     st.session_state.messages.append({"role": "user", "content": user_query})
@@ -208,7 +220,7 @@ if user_query:
     matched_id = result.get("id") or ""
     score = result.get("score", 0.0)
 
-    # Berikan poin hanya satu kali per ID FAQ yang cocok
+    
     if matched_id and matched_id not in st.session_state.answered_faq_ids:
         add_points(result.get("points", 5))
         st.session_state.answered_faq_ids.add(matched_id)
@@ -230,7 +242,6 @@ if user_query:
 
     st.rerun()
 
-# Pratinjau log opsional
 with st.expander("📄 Pratinjau Log Interaksi (Opsional)"):
     try:
         logs = pd.read_csv(LOG_PATH)
