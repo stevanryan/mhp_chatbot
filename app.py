@@ -1,14 +1,15 @@
 import streamlit as st
 import pandas as pd
 import base64
+import random # Ditambahkan untuk mengacak kuis
 
 from utils.loader import load_faq_json, load_quiz_json
 from utils.matcher import FAQMatcher
 from utils.gamification import init_game_state, add_points, get_badge, reset_chat_and_game
 from utils.logger import log_interaction
 
-FAQ_PATH = "data/faq_data2.json"
-QUIZ_PATH = "data/quiz_data2.json"
+FAQ_PATH = "data/faq_data.json"
+QUIZ_PATH = "data/quiz_data.json"
 LOG_PATH = "data/interaction_logs.csv"
 
 st.set_page_config(
@@ -16,7 +17,6 @@ st.set_page_config(
     page_icon="💧", 
     layout="wide",
 )
-
 
 # Function to read local file and convert it to base64 format
 def get_base64_of_bin_file(bin_file):
@@ -116,6 +116,12 @@ init_game_state()
 if "quiz_started" not in st.session_state:
     st.session_state.quiz_started = False
 
+# --- Inisialisasi State Tambahan untuk Kuis (10 Soal per Ronde) ---
+if "quiz_pool" not in st.session_state:
+    st.session_state.quiz_pool = random.sample(quiz_items, min(10, len(quiz_items)))
+if "quiz_round" not in st.session_state:
+    st.session_state.quiz_round = 1
+
 if not st.session_state.messages:
     st.session_state.messages = [
         {
@@ -157,14 +163,16 @@ with st.sidebar:
     with colA:
         st.metric("Poin", st.session_state.points)
     with colB:
-        st.metric("Progres Kuis", f"{min(st.session_state.quiz_index, len(quiz_items))}/{len(quiz_items)}")
+        st.metric("Progres Kuis", f"{min(st.session_state.quiz_index, len(st.session_state.quiz_pool))}/10 (R. {st.session_state.quiz_round})")
     
     st.divider()
     
     # Reset session button
     if st.button("Mulai Ulang Sesi", use_container_width=True):
         reset_chat_and_game()
-        st.session_state.quiz_started = False # Make sure quiz lock is reset when starting a new session
+        st.session_state.quiz_started = False 
+        st.session_state.quiz_pool = random.sample(quiz_items, min(10, len(quiz_items)))
+        st.session_state.quiz_round = 1
         st.session_state.messages = [
             {
                 "role": "assistant",
@@ -172,14 +180,6 @@ with st.sidebar:
             }
         ]
         st.rerun()
-
-    # with st.expander("📄 Log Interaksi (Admin)"):
-    #     try:
-    #         logs = pd.read_csv(LOG_PATH)
-    #         st.dataframe(logs.tail(5), use_container_width=True)
-    #     except FileNotFoundError:
-    #         st.info("Belum ada log.")
-
 
 # --- PAGE ROUTING ---
 # Page 1: Main Chatbot Interface
@@ -244,23 +244,38 @@ elif page_selection == "📖 Ruang Belajar":
     st.write("Selamat datang di pusat materi Edu-Wisata. Silakan pelajari informasi di bawah ini sebelum menguji pengetahuan Anda di halaman Kuis!")
     st.divider()
     
-    st.header("Ringkasan PLTMH")
-    st.write(
-        "PLTMH (Pembangkit Listrik Tenaga Mikro Hidro) adalah sistem kelistrikan skala kecil yang memanfaatkan aliran air. "
-        "Air menggerakkan turbin, turbin memutar generator, dan generator tersebut menghasilkan listrik."
-    )
-    st.info(
-        "Lokasi wisata ini bersifat edukatif karena pengunjung dapat menikmati alam sambil belajar secara langsung bagaimana energi terbarukan bekerja."
-    )
-    
+    st.header("🌊 Mengenal Kincir Air & Energi Terbarukan di Tegal Balong")
+    st.markdown("""
+    **1. Pendahuluan: Pesona Tuk Bulus dan Edu-Wisata**
+    Dusun Tegal Balong di Desa Bimomartani memiliki potensi alam yang luar biasa, salah satunya adalah mata air Pancuran Tuk Bulus yang airnya mengalir tak pernah susut sepanjang tahun. Bersama Kelompok Sadar Wisata (Pokdarwis), potensi ini tidak hanya dikembangkan menjadi area kolam pemandian, tetapi juga menjadi pusat Edu-Wisata (Wisata Edukasi) Energi. Di sini, pengunjung dapat bersantai menikmati alam sekaligus belajar bagaimana aliran air dapat dimanfaatkan untuk menghasilkan listrik secara mandiri.
+
+    **2. Apa itu Kincir Air dan PLTMH?**
+    Kincir air yang ada di lokasi ini adalah bagian dari sistem PLTMH (Pembangkit Listrik Tenaga Mikro Hidro). PLTMH adalah sebuah sistem pembangkit listrik berskala kecil yang ramah lingkungan. Berbeda dengan bendungan raksasa yang membutuhkan area yang sangat luas, PLTMH beroperasi dalam skala kecil dan didesain khusus untuk memanfaatkan aliran air lokal (seperti Pancuran Tuk Bulus) untuk menerangi area sekitarnya.
+
+    **3. Bagaimana Cara Kerja Kincir Air (PLTMH)?**
+    Proses perubahan energi air menjadi energi listrik ini sangat menarik dan melalui beberapa tahapan sederhana:
+    * **Aliran Air Menggerakkan Turbin:** Air dari Pancuran Tuk Bulus dialirkan untuk menabrak baling-baling kincir (turbin). Energi dari aliran air ini diubah menjadi energi mekanik putar.
+    * **Putaran Turbin Menggerakkan Generator:** Turbin yang berputar tersebut dihubungkan ke sebuah generator.
+    * **Menghasilkan Listrik:** Generator inilah yang memegang peran utama untuk mengubah energi mekanik (putaran) menjadi energi listrik yang kemudian bisa digunakan untuk menyalakan lampu di sekitar area wisata.
+
+    **4. Faktor Penentu Kekuatan Listrik**
+    Besar kecilnya listrik yang dihasilkan oleh sistem PLTMH dipengaruhi oleh tiga hal utama:
+    * **Debit Air:** Kecepatan dan jumlah volume aliran air.
+    * **Head (Tinggi Jatuh Air):** Jarak ketinggian air jatuh sebelum mengenai turbin.
+    * **Efisiensi Alat:** Kualitas dari sistem turbin dan generator yang terpasang.
+
+    **5. Wisata yang Bertanggung Jawab**
+    Karena PLTMH sangat bergantung pada alam, pelestarian lingkungan adalah kunci utamanya. Pengunjung diajak untuk turut serta menjaga kebersihan dengan tidak membuang sampah sembarangan di area aliran air, tidak merusak tanaman, dan mematuhi batas aman dari peralatan teknis pembangkit listrik.
+    """)
+
 
 # Page 3 & 4: Quiz In Progress & Quiz Finished
 elif page_selection == "🧠 Kuis Interaktif":
     
     # HALAMAN PERSIAPAN: Sebelum kuis dimulai
     if not st.session_state.quiz_started and not st.session_state.quiz_finished:
-        st.title("🧠 Siap Menguji Pengetahuan Anda?")
-        st.write("Anda akan mengerjakan kuis untuk mendapatkan poin dan lencana.")
+        st.title(f"🧠 Siap Menguji Pengetahuan Anda? (Ronde {st.session_state.quiz_round})")
+        st.write("Anda akan mengerjakan 10 soal kuis acak untuk mendapatkan poin dan menaikkan lencana.")
         
         st.warning("🚨 **Perhatian:** Begitu kuis dimulai, menu navigasi akan dikunci. Anda tidak dapat kembali ke halaman Chatbot atau Materi hingga kuis selesai (Pencegahan Mencontek).")
         
@@ -270,19 +285,19 @@ elif page_selection == "🧠 Kuis Interaktif":
 
     # Page 3: Quiz In Progress
     elif st.session_state.quiz_started and not st.session_state.quiz_finished:
-        st.title("🧠 Mengerjakan Kuis...")
+        st.title(f"🧠 Mengerjakan Kuis Ronde {st.session_state.quiz_round}...")
         st.divider()
         
         current_idx = st.session_state.quiz_index
-        if current_idx < len(quiz_items):
-            q = quiz_items[current_idx]
-            st.subheader(f"Pertanyaan {current_idx + 1} dari {len(quiz_items)}")
+        if current_idx < len(st.session_state.quiz_pool):
+            q = st.session_state.quiz_pool[current_idx]
+            st.subheader(f"Pertanyaan {current_idx + 1} dari 10")
             st.write(f"**{q['question']}**")
 
             choice = st.radio(
                 "Pilih jawaban yang menurut Anda paling tepat:",
                 q["options"],
-                key=f"quiz_choice_{current_idx}",
+                key=f"quiz_choice_{st.session_state.quiz_round}_{current_idx}",
                 index=None,
             )
 
@@ -320,32 +335,39 @@ elif page_selection == "🧠 Kuis Interaktif":
                     st.info(f"**Penjelasan:** {q['explanation']}")
 
                     st.session_state.quiz_index += 1
-                    if st.session_state.quiz_index >= len(quiz_items):
+                    if st.session_state.quiz_index >= len(st.session_state.quiz_pool):
                         st.session_state.quiz_finished = True
-                    st.rerun()
+                st.rerun()
         else:
             st.session_state.quiz_finished = True
             st.rerun()
 
     # Page 4: Quiz Finished
     elif st.session_state.quiz_finished:
-        st.title("🎉 Terima Kasih Telah Berpartisipasi!")
+        st.title(f"🎉 Ronde {st.session_state.quiz_round} Selesai!")
         st.balloons()
         
-        st.write("Anda telah menyelesaikan semua pertanyaan kuis dan menu navigasi telah dibuka kembali.")
+        st.write("Anda telah menyelesaikan 10 pertanyaan kuis dan menu navigasi telah dibuka kembali.")
         
         result_container = st.container(border=True)
         with result_container:
             st.subheader("Ringkasan Hasil Kuis Anda")
-            st.write(f"Jawaban Benar : **{st.session_state.quiz_score} dari {len(quiz_items)}**")
+            st.write(f"Jawaban Benar : **{st.session_state.quiz_score} dari 10**")
             st.write(f"Total Poin Akhir : **{st.session_state.points} Poin**")
             st.write(f"Pencapaian Lencana : **{get_badge(st.session_state.points)}**")
             
+            # Notifikasi spesial jika mencapai lencana tertinggi (Opsional, pastikan nama lencana sesuai di utils)
+            current_badge = get_badge(st.session_state.points)
+            if current_badge in ["Duta Mikro Hidro", "Mini Hydropower Ambassador"]:
+                st.success("🏆 Luar biasa! Anda telah mencapai tingkat lencana tertinggi!")
+            
         st.write("")
-        if st.button("🔄 Kerjakan Ulang Kuis", type="secondary"):
+        if st.button("🔄 Lanjut Ronde Berikutnya (10 Soal Acak Baru)", type="primary"):
             st.session_state.quiz_index = 0
-            st.session_state.quiz_answered_ids = set()
+            st.session_state.quiz_answered_ids = set() # Hapus histori jawaban agar bisa dapat poin lagi di ronde baru
             st.session_state.quiz_score = 0
             st.session_state.quiz_finished = False
-            st.session_state.quiz_started = False # Remove quiz lock to allow retaking
+            st.session_state.quiz_started = False
+            st.session_state.quiz_round += 1
+            st.session_state.quiz_pool = random.sample(quiz_items, min(10, len(quiz_items)))
             st.rerun()
