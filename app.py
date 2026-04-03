@@ -269,11 +269,11 @@ if page_selection == "💬 Chatbot Utama":
 
 # Page 2: Learning section
 elif page_selection == "📖 Ruang Belajar":
-    st.title("📖 Ruang Belajar PLTMH")
+    st.title("Ruang Belajar PLTMH")
     st.write("Selamat datang di pusat materi Edu-Wisata. Silakan pelajari informasi di bawah ini sebelum menguji pengetahuan Anda di halaman Kuis!")
     st.divider()
     
-    st.header("🌊 Mengenal Kincir Air & Energi Terbarukan di Tegal Balong")
+    st.header("Mengenal Kincir Air & Energi Terbarukan di Tegal Balong")
     
     img_kincir_path = "img/kincir_tukbulus.jpeg"
     try:

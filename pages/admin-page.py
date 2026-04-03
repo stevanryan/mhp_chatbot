@@ -5,11 +5,10 @@ import os
 # Konfigurasi Halaman Admin
 st.set_page_config(
     page_title="Dasbor Admin - Edu-Wisata",
-    page_icon="📊",
     layout="wide"
 )
 
-st.title("📊 Dasbor Analisis Log Chatbot")
+st.title("Dasbor Analisis Log Chatbot")
 st.markdown("Halaman ini khusus untuk admin meninjau hasil perhitungan algoritma, performa *chatbot*, dan riwayat aktivitas pengguna.")
 st.divider()
 
@@ -21,7 +20,7 @@ if os.path.exists(LOG_PATH):
     df = pd.read_csv(LOG_PATH)
     
     # --- BAGIAN 1: METRIK UTAMA (KPI) ---
-    st.subheader("📈 Ringkasan Performa")
+    st.subheader("Ringkasan Performa")
     
     # Memisahkan data chat dan kuis
     df_chat = df[df['event_type'] == 'chat']
@@ -42,10 +41,10 @@ if os.path.exists(LOG_PATH):
     st.divider()
 
     # --- BAGIAN 2: TABEL FILTER AKTIVITAS ---
-    st.subheader("🔍 Detail Log Interaksi")
+    st.subheader("Detail Log Interaksi")
     
     # Membuat Tab untuk merapikan tampilan
-    tab1, tab2, tab3 = st.tabs(["💬 Log Chatbot (FAQ)", "🧠 Log Kuis", "📂 Semua Data Raw"])
+    tab1, tab2, tab3 = st.tabs(["Log Chatbot (FAQ)", "Log Kuis", "Semua Data Raw"])
     
     with tab1:
         st.write("**Riwayat Pertanyaan Pengunjung & Hasil Hitungan Algoritma:**")
@@ -79,11 +78,11 @@ if os.path.exists(LOG_PATH):
         # Tombol untuk mengunduh log sebagai Excel/CSV
         csv = df.to_csv(index=False).encode('utf-8')
         st.download_button(
-            label="📥 Unduh Data Log (CSV)",
+            label="Unduh Data Log (CSV)",
             data=csv,
             file_name='log_interaksi_eduwisata.csv',
             mime='text/csv',
         )
 
 else:
-    st.warning("📁 File log interaksi belum ditemukan. Pastikan pengunjung sudah mencoba mengobrol dengan chatbot atau mengerjakan kuis agar sistem membuat file `interaction_logs.csv`.")
+    st.warning("File log interaksi belum ditemukan. Pastikan pengunjung sudah mencoba mengobrol dengan chatbot atau mengerjakan kuis agar sistem membuat file `interaction_logs.csv`.")
