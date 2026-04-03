@@ -116,7 +116,7 @@ init_game_state()
 if "quiz_started" not in st.session_state:
     st.session_state.quiz_started = False
 
-# --- Inisialisasi State Tambahan untuk Kuis (10 Soal per Ronde) ---
+# initialize additional state variables for quiz management
 if "quiz_pool" not in st.session_state:
     st.session_state.quiz_pool = random.sample(quiz_items, min(10, len(quiz_items)))
 if "quiz_round" not in st.session_state:
@@ -136,50 +136,79 @@ if not st.session_state.messages:
 with st.sidebar:
     st.title("🧭 Navigasi Menu")
     
+    PAGE_MAP = {
+        "chatbot": "💬 Chatbot Utama",
+        "belajar": "📖 Ruang Belajar",
+        "kuis": "🧠 Kuis Interaktif"
+    }
+    INV_PAGE_MAP = {v: k for k, v in PAGE_MAP.items()}
+    
+    if "current_page" not in st.session_state:
+        url_page = st.query_params.get("page", "chatbot") 
+        st.session_state.current_page = PAGE_MAP.get(url_page, "💬 Chatbot Utama")
+    
+    def change_page(page_name):
+        st.session_state.current_page = page_name
+        st.query_params["page"] = INV_PAGE_MAP[page_name]
+    # --------------------------------------------------------
+    
     if st.session_state.quiz_started and not st.session_state.quiz_finished:
         st.error("🔒 Ujian Berlangsung: Navigasi Terkunci")
-        nav_options = ["🧠 Kuis Interaktif"]
-        default_index = 0
-    else:
-        nav_options = ["💬 Chatbot Utama", "📖 Ruang Belajar", "🧠 Kuis Interaktif"]
+        change_page("🧠 Kuis Interaktif")
+        # Tombol statis (terkunci)
+        st.button("🧠 Kuis Interaktif", use_container_width=True, type="primary")
         
-        if st.session_state.quiz_finished:
-            default_index = 2
-        else:
-            default_index = 0
+    else:
+        # check whether quiz just finished OR there's an instruction to stay on quiz page
+        if st.session_state.quiz_finished or st.session_state.get("keep_quiz_page", False):
+            change_page("🧠 Kuis Interaktif")
+            if "keep_quiz_page" in st.session_state:
+                del st.session_state["keep_quiz_page"]
+        
+        # Buat Navigasi dengan Tombol
+        if st.button("💬 Chatbot Utama", use_container_width=True, type="primary" if st.session_state.current_page == "💬 Chatbot Utama" else "secondary"):
+            change_page("💬 Chatbot Utama")
+            st.rerun()
+            
+        if st.button("📖 Ruang Belajar", use_container_width=True, type="primary" if st.session_state.current_page == "📖 Ruang Belajar" else "secondary"):
+            change_page("📖 Ruang Belajar")
+            st.rerun()
+            
+        if st.button("🧠 Kuis Interaktif", use_container_width=True, type="primary" if st.session_state.current_page == "🧠 Kuis Interaktif" else "secondary"):
+            change_page("🧠 Kuis Interaktif")
+            st.rerun()
 
-    page_selection = st.radio(
-        "Pergi ke halaman:",
-        nav_options,
-        index=default_index
-    )
+    page_selection = st.session_state.current_page
     
     st.divider()
     
     st.subheader("Status Anda")
     st.metric("Lencana", get_badge(st.session_state.points))
+    st.metric("Total Poin", st.session_state.points)
     
-    colA, colB = st.columns(2)
-    with colA:
-        st.metric("Poin", st.session_state.points)
-    with colB:
-        st.metric("Progres Kuis", f"{min(st.session_state.quiz_index, len(st.session_state.quiz_pool))}/10 (R. {st.session_state.quiz_round})")
+    # only show quiz progress if quiz is in progress
+    if st.session_state.quiz_started and not st.session_state.quiz_finished:
+        st.write(f"**🔢 Progres Kuis:** {st.session_state.quiz_index}/10 (Level {st.session_state.quiz_round})")
     
     st.divider()
     
     # Reset session button
-    if st.button("Mulai Ulang Sesi", use_container_width=True):
-        reset_chat_and_game()
-        st.session_state.quiz_started = False 
-        st.session_state.quiz_pool = random.sample(quiz_items, min(10, len(quiz_items)))
-        st.session_state.quiz_round = 1
-        st.session_state.messages = [
-            {
-                "role": "assistant",
-                "content": "Sesi telah dimulai ulang. Tanyakan sesuatu tentang lokasi wisata atau PLTMH kepada saya.",
-            }
-        ]
-        st.rerun()
+    # if st.button("Mulai Ulang Sesi", use_container_width=True):
+    #     reset_chat_and_game()
+    #     st.session_state.quiz_started = False 
+    #     st.session_state.quiz_pool = random.sample(quiz_items, min(10, len(quiz_items)))
+    #     st.session_state.quiz_round = 1
+        
+    #     # Panggil fungsi helper agar URL juga ikut ter-reset!
+    #     change_page("💬 Chatbot Utama") 
+        
+    #     st.session_state.messages = [
+    #         {
+    #             "role": "assistant",
+    #             "content": "Sesi telah dimulai ulang. Tanyakan sesuatu tentang lokasi wisata atau PLTMH kepada saya.",
+    #         }
+    #     ]
+    #     st.rerun()
 
 # --- PAGE ROUTING ---
 # Page 1: Main Chatbot Interface
@@ -245,26 +274,74 @@ elif page_selection == "📖 Ruang Belajar":
     st.divider()
     
     st.header("🌊 Mengenal Kincir Air & Energi Terbarukan di Tegal Balong")
+    
+    img_kincir_path = "img/kincir_tukbulus.jpeg"
+    try:
+        kincir_base64 = get_base64_of_bin_file(img_kincir_path)
+        
+        img_html = f"""
+        <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+            <img src="data:image/jpeg;base64,{kincir_base64}" 
+                 style="width: 600px; max-width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        </div>
+        <p style="text-align: center; color: #666; font-style: italic; font-size: 0.9em; margin-bottom: 20px;">
+            Kincir Air PLTMH Tuk Bulus
+        </p>
+        """
+        st.markdown(img_html, unsafe_allow_html=True)
+
+    except FileNotFoundError:
+        st.warning("⚠️ Gambar kincir_tukbulus.jpeg tidak ditemukan. Pastikan file sudah ada di dalam folder 'img/'.")
+    # ----------------------------------------------
+    
     st.markdown("""
-    **1. Pendahuluan: Pesona Tuk Bulus dan Edu-Wisata**
+    ### Pesona Tuk Bulus dan Edu-Wisata
     Dusun Tegal Balong di Desa Bimomartani memiliki potensi alam yang luar biasa, salah satunya adalah mata air Pancuran Tuk Bulus yang airnya mengalir tak pernah susut sepanjang tahun. Bersama Kelompok Sadar Wisata (Pokdarwis), potensi ini tidak hanya dikembangkan menjadi area kolam pemandian, tetapi juga menjadi pusat Edu-Wisata (Wisata Edukasi) Energi. Di sini, pengunjung dapat bersantai menikmati alam sekaligus belajar bagaimana aliran air dapat dimanfaatkan untuk menghasilkan listrik secara mandiri.
 
-    **2. Apa itu Kincir Air dan PLTMH?**
+    ### Apa itu Kincir Air dan PLTMH?
     Kincir air yang ada di lokasi ini adalah bagian dari sistem PLTMH (Pembangkit Listrik Tenaga Mikro Hidro). PLTMH adalah sebuah sistem pembangkit listrik berskala kecil yang ramah lingkungan. Berbeda dengan bendungan raksasa yang membutuhkan area yang sangat luas, PLTMH beroperasi dalam skala kecil dan didesain khusus untuk memanfaatkan aliran air lokal (seperti Pancuran Tuk Bulus) untuk menerangi area sekitarnya.
+    """)
+    
+    img_kincir_2 = "img/kincir_tukbulus_2.jpeg"
+    img_kincir_3 = "img/kincir_tukbulus_3.jpeg"
+    
+    try:
+        base64_1 = get_base64_of_bin_file(img_kincir_2)
+        base64_2 = get_base64_of_bin_file(img_kincir_3)
+        
+        img_html = f"""
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
+                <div style="text-align: center;">
+                    <img src="data:image/jpeg;base64,{base64_1}" style="height: 350px; width: auto; max-width: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+                <div style="text-align: center;">
+                    <img src="data:image/jpeg;base64,{base64_2}" style="height: 350px; width: auto; max-width: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+            <p style="text-align: center; color: #666; font-style: italic; font-size: 0.9em; margin-bottom: 20px;">
+                Kincir Air PLTMH Tuk Bulus Pada Saat Malam Hari
+            </p>
+            """
+        st.markdown(img_html, unsafe_allow_html=True)
 
-    **3. Bagaimana Cara Kerja Kincir Air (PLTMH)?**
+    except FileNotFoundError:
+        st.warning("⚠️ Salah satu atau kedua file gambar tidak ditemukan. Pastikan file ada di dalam folder 'img/'.")
+    # ----------------------------------------------
+    
+    st.markdown("""
+    ### Bagaimana Cara Kerja Kincir Air (PLTMH)?
     Proses perubahan energi air menjadi energi listrik ini sangat menarik dan melalui beberapa tahapan sederhana:
     * **Aliran Air Menggerakkan Turbin:** Air dari Pancuran Tuk Bulus dialirkan untuk menabrak baling-baling kincir (turbin). Energi dari aliran air ini diubah menjadi energi mekanik putar.
     * **Putaran Turbin Menggerakkan Generator:** Turbin yang berputar tersebut dihubungkan ke sebuah generator.
     * **Menghasilkan Listrik:** Generator inilah yang memegang peran utama untuk mengubah energi mekanik (putaran) menjadi energi listrik yang kemudian bisa digunakan untuk menyalakan lampu di sekitar area wisata.
 
-    **4. Faktor Penentu Kekuatan Listrik**
+    ### Faktor Penentu Kekuatan Listrik
     Besar kecilnya listrik yang dihasilkan oleh sistem PLTMH dipengaruhi oleh tiga hal utama:
     * **Debit Air:** Kecepatan dan jumlah volume aliran air.
     * **Head (Tinggi Jatuh Air):** Jarak ketinggian air jatuh sebelum mengenai turbin.
     * **Efisiensi Alat:** Kualitas dari sistem turbin dan generator yang terpasang.
 
-    **5. Wisata yang Bertanggung Jawab**
+    ### Wisata yang Bertanggung Jawab
     Karena PLTMH sangat bergantung pada alam, pelestarian lingkungan adalah kunci utamanya. Pengunjung diajak untuk turut serta menjaga kebersihan dengan tidak membuang sampah sembarangan di area aliran air, tidak merusak tanaman, dan mematuhi batas aman dari peralatan teknis pembangkit listrik.
     """)
 
@@ -272,12 +349,12 @@ elif page_selection == "📖 Ruang Belajar":
 # Page 3 & 4: Quiz In Progress & Quiz Finished
 elif page_selection == "🧠 Kuis Interaktif":
     
-    # HALAMAN PERSIAPAN: Sebelum kuis dimulai
+    # Preparation page: Before quiz starts
     if not st.session_state.quiz_started and not st.session_state.quiz_finished:
-        st.title(f"🧠 Siap Menguji Pengetahuan Anda? (Ronde {st.session_state.quiz_round})")
+        st.title(f"🧠 Siap Menguji Pengetahuan Anda? (Level {st.session_state.quiz_round})")
         st.write("Anda akan mengerjakan 10 soal kuis acak untuk mendapatkan poin dan menaikkan lencana.")
         
-        st.warning("🚨 **Perhatian:** Begitu kuis dimulai, menu navigasi akan dikunci. Anda tidak dapat kembali ke halaman Chatbot atau Materi hingga kuis selesai (Pencegahan Mencontek).")
+        st.warning("🚨 **Perhatian:** Begitu kuis dimulai, menu navigasi akan dikunci. Anda tidak dapat kembali ke halaman Chatbot atau Materi hingga kuis selesai.")
         
         if st.button("🚀 Mulai Kuis Sekarang!", type="primary"):
             st.session_state.quiz_started = True
@@ -285,20 +362,21 @@ elif page_selection == "🧠 Kuis Interaktif":
 
     # Page 3: Quiz In Progress
     elif st.session_state.quiz_started and not st.session_state.quiz_finished:
-        st.title(f"🧠 Mengerjakan Kuis Ronde {st.session_state.quiz_round}...")
+        st.title(f"🧠 Mengerjakan Kuis Level {st.session_state.quiz_round}")
         st.divider()
         
         current_idx = st.session_state.quiz_index
         if current_idx < len(st.session_state.quiz_pool):
             q = st.session_state.quiz_pool[current_idx]
-            st.subheader(f"Pertanyaan {current_idx + 1} dari 10")
-            st.write(f"**{q['question']}**")
+            st.markdown(f"###### Pertanyaan {current_idx + 1} dari 10")
+            st.markdown(f"#### {q['question']}")
 
             choice = st.radio(
-                "Pilih jawaban yang menurut Anda paling tepat:",
-                q["options"],
+                label="Pilih jawaban",
+                options=q["options"],
                 key=f"quiz_choice_{st.session_state.quiz_round}_{current_idx}",
                 index=None,
+                label_visibility="collapsed"
             )
 
             if st.button("Simpan Jawaban", type="primary"):
@@ -344,10 +422,10 @@ elif page_selection == "🧠 Kuis Interaktif":
 
     # Page 4: Quiz Finished
     elif st.session_state.quiz_finished:
-        st.title(f"🎉 Ronde {st.session_state.quiz_round} Selesai!")
+        st.title(f"🎉 Level {st.session_state.quiz_round} Selesai!")
         st.balloons()
         
-        st.write("Anda telah menyelesaikan 10 pertanyaan kuis dan menu navigasi telah dibuka kembali.")
+        st.write("Anda telah menyelesaikan 10 pertanyaan kuis")
         
         result_container = st.container(border=True)
         with result_container:
@@ -356,18 +434,21 @@ elif page_selection == "🧠 Kuis Interaktif":
             st.write(f"Total Poin Akhir : **{st.session_state.points} Poin**")
             st.write(f"Pencapaian Lencana : **{get_badge(st.session_state.points)}**")
             
-            # Notifikasi spesial jika mencapai lencana tertinggi (Opsional, pastikan nama lencana sesuai di utils)
             current_badge = get_badge(st.session_state.points)
-            if current_badge in ["Duta Mikro Hidro", "Mini Hydropower Ambassador"]:
-                st.success("🏆 Luar biasa! Anda telah mencapai tingkat lencana tertinggi!")
+            if current_badge in ["Mini Hydropower Ambassador"]:
+                st.success("Luar biasa! Anda telah mencapai tingkat lencana tertinggi!")
             
         st.write("")
-        if st.button("🔄 Lanjut Ronde Berikutnya (10 Soal Acak Baru)", type="primary"):
+        if st.button("🔄 Lanjut Level Berikutnya", type="primary"):
             st.session_state.quiz_index = 0
-            st.session_state.quiz_answered_ids = set() # Hapus histori jawaban agar bisa dapat poin lagi di ronde baru
+            st.session_state.quiz_answered_ids = set() # Hapus histori jawaban agar bisa dapat poin lagi
             st.session_state.quiz_score = 0
             st.session_state.quiz_finished = False
             st.session_state.quiz_started = False
             st.session_state.quiz_round += 1
             st.session_state.quiz_pool = random.sample(quiz_items, min(10, len(quiz_items)))
+            
+            # make the sidebar to stay on the quiz page after rerun
+            st.session_state.keep_quiz_page = True 
+            
             st.rerun()

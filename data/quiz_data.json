@@ -43,7 +43,7 @@
   },
   {
     "id": "Q07",
-    "question": "PLTMH biasanya dirancang untuk ...",
+    "question": "PLTMH biasanya dirancang untuk...",
     "options": ["Hanya untuk kota-kota metropolitan", "Kebutuhan listrik lokal atau skala kecil", "Pesawat terbang", "Pelayaran kapal laut"],
     "correct_index": 1,
     "explanation": "PLTMH umumnya digunakan untuk pembangkit listrik skala kecil guna memenuhi kebutuhan energi masyarakat lokal sekitarnya."
@@ -113,7 +113,7 @@
   },
   {
     "id": "Q17",
-    "question": "Mini hydropower biasanya dirancang untuk ...",
+    "question": "Mini hydropower biasanya dirancang untuk...",
     "options": ["Hanya kota besar", "Kebutuhan listrik lokal atau skala kecil", "Pesawat terbang", "Pengiriman laut"],
     "correct_index": 1,
     "explanation": "Mini hydropower biasanya digunakan untuk pembangkit listrik lokal atau skala kecil."
@@ -162,7 +162,7 @@
   },
   {
     "id": "Q24",
-    "question": "Mini hydropower termasuk dalam kategori energi ...",
+    "question": "Mini hydropower termasuk dalam kategori energi...",
     "options": ["Tak terbarukan", "Terbarukan", "Fosil", "Buatan"],
     "correct_index": 1,
     "explanation": "Mini hydropower termasuk energi terbarukan karena memanfaatkan sumber daya air yang terus diperbarui secara alami."
@@ -176,7 +176,7 @@
   },
   {
     "id": "Q26",
-    "question": "Dalam chatbot edukasi, kuis digunakan untuk ...",
+    "question": "Dalam chatbot edukasi, kuis digunakan untuk...",
     "options": ["Mengurangi informasi", "Mengukur pemahaman pengguna", "Menghapus skor", "Menghentikan percakapan"],
     "correct_index": 1,
     "explanation": "Kuis dalam chatbot membantu mengukur sejauh mana pengguna memahami materi yang diberikan."
