@@ -3,7 +3,7 @@ from typing import Dict, List
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory # Tambahan untuk Stemming
 
 class FAQMatcher:
     def __init__(self, faq_items: List[Dict], threshold: float = 0.30):
@@ -17,13 +17,42 @@ class FAQMatcher:
             norm="l2",
             min_df=1,
         )
+        
+        # Inisialisasi Sastrawi Stemmer
+        factory = StemmerFactory()
+        self.stemmer = factory.create_stemmer()
+        
+        # Kamus Sinonim & Typo (Bisa ditambah sesuai kebutuhan)
+        self.synonyms = {
+            "gimana": "bagaimana",
+            "bikin": "buat",
+            "plmt": "pltmh",
+            "pltm": "pltmh",
+            "mikrohidro": "mikro hidro",
+            "aturan": "syarat",
+            "tempat": "lokasi",
+            "buka": "jam",
+        }
+
         self.documents = [self._build_doc(item) for item in self.faq_items]
         self.X = self.vectorizer.fit_transform(self.documents)
 
     def _clean_text(self, text: str) -> str:
+        # 1. Lowercase dan bersihkan spasi
         text = text.lower().strip()
+        
+        # 2. Hapus tanda baca
         text = re.sub(r"[^\w\s]", " ", text)
         text = re.sub(r"\s+", " ", text)
+        
+        # 3. Ganti kata menggunakan kamus sinonim/typo
+        words = text.split()
+        replaced_words = [self.synonyms.get(w, w) for w in words]
+        text = " ".join(replaced_words)
+        
+        # 4. Terapkan stemming (menghapus imbuhan, misal: 'wisatawan' -> 'wisata')
+        text = self.stemmer.stem(text)
+        
         return text
 
     def _build_doc(self, item: Dict) -> str:
@@ -37,10 +66,12 @@ class FAQMatcher:
         best_item = None
         best_hits = 0
         for item in self.faq_items:
+            # Perlu diperhatikan: keyword dari FAQ juga sebaiknya bersih dari imbuhan
             hits = sum(1 for kw in item.get("keywords", []) if self._clean_text(kw) in q)
             if hits > best_hits:
                 best_hits = hits
                 best_item = item
+                
         if best_item and best_hits > 0:
             return {
                 "id": best_item["id"],
@@ -49,9 +80,9 @@ class FAQMatcher:
                 "points": best_item.get("points", 5),
                 "match_type": "keyword",
             }
+            
         return {
             "id": None,
-            # Teks di bawah ini diubah ke Bahasa Indonesia
             "answer": "Maaf, saya tidak dapat menemukan jawaban yang sesuai. Silakan coba kata kunci lain seperti jam buka, fasilitas, PLTMH, turbin, generator, atau kuis.",
             "score": 0.0,
             "points": 0,
@@ -63,7 +94,6 @@ class FAQMatcher:
         if not q:
             return {
                 "id": None,
-                # Teks di bawah ini diubah ke Bahasa Indonesia
                 "answer": "Silakan ketik pertanyaan terlebih dahulu.",
                 "score": 0.0,
                 "points": 0,
@@ -85,4 +115,4 @@ class FAQMatcher:
                 "match_type": "similarity",
             }
 
-        return self._keyword_fallback(q)
+        return self._keyword_fallback(query) 
