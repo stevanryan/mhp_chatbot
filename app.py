@@ -19,6 +19,8 @@ st.set_page_config(
 )
 
 # Function to read local file and convert it to base64 format
+# [UPDATE] Menambahkan @st.cache_data agar konversi gambar tidak diulang setiap rerun (menghemat waktu proses)
+@st.cache_data
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
@@ -107,9 +109,24 @@ custom_css = f"""
 </style>
 """
 
-faq_items = load_faq_json(FAQ_PATH)
-quiz_items = load_quiz_json(QUIZ_PATH)
-matcher = FAQMatcher(faq_items=faq_items, threshold=0.30)
+# [UPDATE] Menambahkan fungsi caching untuk memuat data JSON 
+@st.cache_data
+def load_cached_json_data():
+    return load_faq_json(FAQ_PATH), load_quiz_json(QUIZ_PATH)
+
+# [UPDATE] Menambahkan fungsi caching untuk inisialisasi model NLP (Mencegah Sastrawi dan TF-IDF berjalan berulang-ulang)
+@st.cache_resource
+def get_cached_matcher(_faq_items):
+    return FAQMatcher(faq_items=_faq_items, threshold=0.30)
+
+# [UPDATE] Memanggil data dan model menggunakan fungsi cache yang baru dibuat
+faq_items, quiz_items = load_cached_json_data()
+matcher = get_cached_matcher(faq_items)
+
+# Deactivate because now we use cached versions of these data and model
+# faq_items = load_faq_json(FAQ_PATH)
+# quiz_items = load_quiz_json(QUIZ_PATH)
+# matcher = FAQMatcher(faq_items=faq_items, threshold=0.30)
 
 init_game_state()
 
@@ -188,7 +205,9 @@ with st.sidebar:
     
     # only show quiz progress if quiz is in progress
     if st.session_state.quiz_started and not st.session_state.quiz_finished:
-        st.write(f"**🔢 Progres Kuis:** {st.session_state.quiz_index}/10 (Level {st.session_state.quiz_round})")
+        # [UPDATE] Menghitung total soal secara dinamis dari quiz_pool untuk mengganti angka hardcoded 10
+        total_kuis_aktif = len(st.session_state.quiz_pool)
+        st.write(f"**🔢 Progres Kuis:** {st.session_state.quiz_index}/{total_kuis_aktif} (Level {st.session_state.quiz_round})")
     
     st.divider()
     
@@ -277,7 +296,8 @@ elif page_selection == "📖 Ruang Belajar":
     
     img_kincir_path = "img/kincir_tukbulus.jpeg"
     try:
-        kincir_base64 = get_base64_of_bin_file(img_kincir_path)
+        # [UPDATE] Menggunakan fungsi yang sudah memakai cache
+        kincir_base64 = get_base64_of_bin_file(img_kincir_path) 
         
         img_html = f"""
         <div style="display: flex; justify-content: center; margin-bottom: 10px;">
@@ -306,6 +326,7 @@ elif page_selection == "📖 Ruang Belajar":
     img_kincir_3 = "img/kincir_tukbulus_3.jpeg"
     
     try:
+        # [UPDATE] Menggunakan fungsi yang sudah memakai cache
         base64_1 = get_base64_of_bin_file(img_kincir_2)
         base64_2 = get_base64_of_bin_file(img_kincir_3)
         
@@ -352,7 +373,9 @@ elif page_selection == "🧠 Kuis Interaktif":
     # Preparation page: Before quiz starts
     if not st.session_state.quiz_started and not st.session_state.quiz_finished:
         st.title(f"🧠 Siap Menguji Pengetahuan Anda? (Level {st.session_state.quiz_round})")
-        st.write("Anda akan mengerjakan 10 soal kuis acak untuk mendapatkan poin dan menaikkan lencana.")
+        # [UPDATE] Menyimpan total kuis ke dalam variabel agar dinamis mengikuti jumlah di file JSON
+        total_kuis_aktif = len(st.session_state.quiz_pool)
+        st.write(f"Anda akan mengerjakan {total_kuis_aktif} soal kuis acak untuk mendapatkan poin dan menaikkan lencana.")
         
         st.warning("🚨 **Perhatian:** Begitu kuis dimulai, menu navigasi akan dikunci. Anda tidak dapat kembali ke halaman Chatbot atau Materi hingga kuis selesai.")
         
@@ -366,9 +389,13 @@ elif page_selection == "🧠 Kuis Interaktif":
         st.divider()
         
         current_idx = st.session_state.quiz_index
+        # [UPDATE] Variabel untuk total soal kuis saat ini
+        total_kuis_aktif = len(st.session_state.quiz_pool)
+        
         if current_idx < len(st.session_state.quiz_pool):
             q = st.session_state.quiz_pool[current_idx]
-            st.markdown(f"###### Pertanyaan {current_idx + 1} dari 10")
+            # [UPDATE] Menyesuaikan tampilan penomoran pertanyaan dengan total dinamis
+            st.markdown(f"###### Pertanyaan {current_idx + 1} dari {total_kuis_aktif}")
             st.markdown(f"#### {q['question']}")
 
             choice = st.radio(
@@ -425,12 +452,17 @@ elif page_selection == "🧠 Kuis Interaktif":
         st.title(f"🎉 Level {st.session_state.quiz_round} Selesai!")
         st.balloons()
         
-        st.write("Anda telah menyelesaikan 10 pertanyaan kuis")
+        # [UPDATE] Variabel untuk total kuis yang telah dikerjakan
+        total_kuis_aktif = len(st.session_state.quiz_pool)
+        
+        # [UPDATE] Teks disesuaikan agar tidak hardcoded "10"
+        st.write(f"Anda telah menyelesaikan {total_kuis_aktif} pertanyaan kuis")
         
         result_container = st.container(border=True)
         with result_container:
             st.subheader("Ringkasan Hasil Kuis Anda")
-            st.write(f"Jawaban Benar : **{st.session_state.quiz_score} dari 10**")
+            # [UPDATE] Teks disesuaikan agar batas nilai maksimum sesuai dengan jumlah soal
+            st.write(f"Jawaban Benar : **{st.session_state.quiz_score} dari {total_kuis_aktif}**")
             st.write(f"Total Poin Akhir : **{st.session_state.points} Poin**")
             st.write(f"Pencapaian Lencana : **{get_badge(st.session_state.points)}**")
             
