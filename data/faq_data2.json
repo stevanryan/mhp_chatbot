@@ -2,30 +2,34 @@
   {
     "id": "W001",
     "category": "tourism",
-    "question": "Apa jam operasional?",
+    "question": "Kapan jam buka atau operasional wisata Tuk Bulus?",
     "keywords": [
       "jam buka",
       "buka",
       "tutup",
       "jadwal",
-      "jam operasional"
+      "jam operasional",
+      "pukul berapa",
+      "weekend"
     ],
-    "answer": "Situs Pariwisata buka setiap hari dari pukul 08:00 hingga 17:00. Jam operasional dapat berubah pada hari libur nasional atau saat cuaca ekstrem.",
+    "answer": "Wisata Edukasi Tuk Bulus Tegal Balong buka setiap hari dari pukul 08:00 hingga 17:00 WIB. Jam operasional dapat berubah sewaktu-waktu jika terjadi cuaca ekstrem demi keselamatan pengunjung.",
     "points": 5
   },
   {
     "id": "W002",
     "category": "tourism",
-    "question": "Fasilitas apa saja yang tersedia?",
+    "question": "Fasilitas apa saja yang tersedia di lokasi?",
     "keywords": [
       "fasilitas",
       "toilet",
       "parkir",
       "area istirahat",
       "mushola",
-      "warung"
+      "warung",
+      "pemandian",
+      "ada apa aja"
     ],
-    "answer": "Fasilitas yang tersedia meliputi area parkir, toilet, area istirahat, dan pos informasi. Fasilitas yang tersedia dapat bervariasi tergantung pada kondisi lokasi.",
+    "answer": "Fasilitas yang tersedia meliputi area kolam pemandian alami, area parkir, toilet umum, gazebo untuk istirahat, warung makanan lokal, dan papan informasi edukasi PLTMH.",
     "points": 5
   },
   {
@@ -38,9 +42,10 @@
       "bahaya",
       "aman",
       "peringatan",
-      "dilarang"
+      "dilarang",
+      "pembatas"
     ],
-    "answer": "Pengunjung harus menghindari area licin, menjauhi peralatan teknis tanpa izin, serta selalu mengikuti rambu dan instruksi petugas.",
+    "answer": "Pengunjung wajib menjaga jarak aman dari area mekanis kincir air, dilarang melompati pagar pembatas peralatan teknis tanpa izin petugas, serta berhati-hati di area tepi kolam yang licin.",
     "points": 10
   },
   {
@@ -52,9 +57,10 @@
       "eduwisata",
       "cocok",
       "pembelajaran",
-      "wisata edukasi"
+      "wisata edukasi",
+      "belajar"
     ],
-    "answer": "Lokasi ini menggabungkan wisata alam dengan sistem mini hydropower, sehingga pengunjung dapat menikmati alam sekaligus belajar bagaimana aliran air diubah menjadi listrik.",
+    "answer": "Lokasi ini menggabungkan keindahan wisata alam dengan sistem PLTMH, sehingga pengunjung dapat menikmati segar dan asrinya alam sekaligus belajar bagaimana aliran air diubah menjadi energi listrik.",
     "points": 10
   },
   {
@@ -66,138 +72,180 @@
       "menjaga",
       "bersih",
       "sampah",
-      "konver",
-      "menjaga kebersihan"
+      "menjaga kebersihan",
+      "merusak"
     ],
-    "answer": "Pengunjung dapat menjaga kebersihan, tidak membuang sampah sembarangan, menghormati batas keamanan, dan tidak merusak tanaman atau peralata.",
+    "answer": "Pengunjung dapat membantu melestarikan lingkungan dengan menjaga kebersihan area, tidak membuang sampah sembarangan di aliran air pancuran, serta tidak merusak tanaman atau peralatan teknis.",
+    "points": 5
+  },
+  {
+    "id": "W006",
+    "category": "tourism",
+    "question": "Apakah boleh berenang di kolam pemandian Tuk Bulus?",
+    "keywords": [
+      "berenang",
+      "ciblon",
+      "mandi",
+      "kolam pemandian",
+      "bawa baju ganti",
+      "kedalaman"
+    ],
+    "answer": "Boleh sekali! Pengunjung diperbolehkan berenang di area kolam pemandian alami Tuk Bulus. Jangan lupa membawa pakaian ganti dan selalu dampingi anak-anak saat bermain di dekat air.",
+    "points": 5
+  },
+  {
+    "id": "W007",
+    "category": "tourism",
+    "question": "Bagaimana akses jalan menuju lokasi Tegal Balong jika membawa kendaraan besar?",
+    "keywords": [
+      "akses jalan",
+      "bus",
+      "mobil",
+      "rute",
+      "parkir bus",
+      "jalan masuk",
+      "lokasi rute"
+    ],
+    "answer": "Akses jalan menuju Dusun Tegal Balong, Bimomartani sudah cukup baik untuk sepeda motor maupun mobil pribadi. Untuk rombongan menggunakan bus pariwisata besar, disarankan berkoordinasi terlebih dahulu dengan pihak Pokdarwis terkait titik penjemputan atau parkir terdekat.",
     "points": 5
   },
   {
     "id": "M001",
     "category": "mhp",
-    "question": "Apa itu mini hydropower?",
+    "question": "Apa itu PLTMH Tuk Bulus?",
     "keywords": [
       "mini hydropower",
       "mhp",
       "mikrohidro",
-      "defini",
-      "apa itu pltmh"
+      "definisi",
+      "apa itu pltmh",
+      "pengertian"
     ],
-    "answer": "Mini hydropower adalah sistem pembangkit listrik skala kecil yang memanfaatkan aliran air untuk menghasilkan listrik.",
+    "answer": "PLTMH (Pembangkit Listrik Tenaga Mikro Hidro) di Tuk Bulus adalah sistem pembangkit listrik skala kecil dan ramah lingkungan yang memanfaatkan energi dari aliran mata air alami untuk menghasilkan listrik.",
     "points": 10
   },
   {
     "id": "M002",
     "category": "mhp",
-    "question": "bagaimana cara kerja mini hydropower?",
+    "question": "Bagaimana cara kerja kincir air PLTMH menghasilkan listrik?",
     "keywords": [
       "cara kerja",
       "prinsip kerja",
       "proses",
       "turbin",
-      "generator"
+      "generator",
+      "mekanisme",
+      "alur"
     ],
-    "answer": "Aliran air memutar turbin. Turbin kemudian menggerakkan generator yang mengubah energi mekanik menjadi energi listrik.",
+    "answer": "Alurnya sederhana: Aliran air dari pancuran dialirkan untuk menabrak kincir (turbin) hingga berputar menjadi energi mekanik. Putaran turbin ini kemudian menggerakkan generator yang bertugas mengubah energi mekanik tersebut menjadi energi listrik.",
     "points": 10
   },
   {
     "id": "M003",
     "category": "mhp",
-    "question": "apa fungsi turbin?",
+    "question": "Apa fungsi turbin atau kincir air dalam sistem?",
     "keywords": [
       "fungsi turbin",
       "turbin",
       "peran turbin",
-      "komponen"
+      "komponen",
+      "kincir"
     ],
-    "answer": "Turbin mengubah energi dari aliran air menjadi energi mekanik berupa putaran.",
+    "answer": "Turbin atau baling-baling kincir berfungsi untuk menangkap dorongan kinetik dari aliran air alami dan mengubahnya menjadi energi mekanik berupa gerakan putaran.",
     "points": 10
   },
   {
     "id": "M004",
     "category": "mhp",
-    "question": "apa fungsi generator?",
+    "question": "Apa fungsi generator pada PLTMH?",
     "keywords": [
       "fungsi generator",
       "generator",
       "peran generator",
       "komponen"
     ],
-    "answer": "TGenerator mengubah energi putaran dari turbin menjadi energi listrik.",
+    "answer": "Generator adalah komponen utama yang berfungsi mengubah energi mekanik (putaran) yang disalurkan oleh turbin kincir air menjadi output energi listrik siap pakai.",
     "points": 10
   },
   {
     "id": "M005",
     "category": "mhp",
-    "question": "Faktor apa saja yang mempengaruhi daya mini hydropower?",
+    "question": "Faktor apa saja yang mempengaruhi daya listrik PLTMH?",
     "keywords": [
       "faktor",
       "daya",
       "tenaga",
       "ketinggian air",
       "kecepatan aliran",
-      "debit"
+      "debit",
+      "head"
     ],
-    "answer": "Daya mini hydropower dipengaruhi oleh debit air, tinggi jatuh air, serta efisiensi sistem turbin dan generator.",
+    "answer": "Besar kecilnya daya listrik dipengaruhi oleh tiga faktor utama: debit air (volume dan kecepatan aliran), head (jarak tinggi jatuh air sebelum mengenai kincir), serta efisiensi kualitas dari sistem mesin turbin dan generator.",
     "points": 15
   },
   {
     "id": "M006",
     "category": "mhp",
-    "question": "apa manfaat mini hydropower?",
+    "question": "Apakah kincir air PLTMH ini tetap menyala di musim kemarau?",
     "keywords": [
-      "manfaat",
-      "keuntungan",
-      "energi terbarukan",
-      "listrik lokal"
+      "musim kemarau",
+      "kemarau",
+      "kering",
+      "mati lampu",
+      "air surut",
+      "saat kemarau"
     ],
-    "answer": "Mini hydropower menyediakan listrik terbarukan, mendukung kebutuhan energi lokal, dan menjadi contoh teknologi berkelanjutan.",
+    "answer": "Ya, tetap menyala. Berkat karakteristik mata air Pancuran Tuk Bulus yang debit airnya stabil dan tidak pernah susut sepanjang tahun, kincir air PLTMH dapat terus berputar menghasilkan listrik tanpa terganggu oleh perubahan musim.",
     "points": 10
   },
   {
     "id": "M007",
     "category": "mhp",
-    "question": "Apakah mini hydropower sama dengan bendungan besar?",
+    "question": "Apakah aliran listrik dari PLTMH ini berbahaya bagi pengunjung yang berenang?",
     "keywords": [
-      "sama dengan bendungan",
-      "perbedaan",
-      "bendungan besar",
-      "skala"
+      "kesetrum",
+      "bahaya listrik",
+      "aman gak",
+      "sengatan",
+      "bocor",
+      "kabel air"
     ],
-    "answer": "Tidak. Keduanya menggunakan air untuk menghasilkan listrik, tetapi tetapi mini hydropower beroperasi dalam skala lebih kecil dan biasanya untuk kebutuhan lokal.",
-    "points": 10
+    "answer": "Sistem penempatan komponen instalasi listrik PLTMH dirancang dengan standar keamanan yang ketat. Komponen generator dan kabel penyalur berada di area kering khusus yang terpisah dan dipagari, sehingga kolam pemandian dipastikan aman dari risiko kebocoran arus listrik.",
+    "points": 15
   },
   {
     "id": "M008",
     "category": "mhp",
-    "question": "Mengapa mini hydropower baik untuk edukasi wisata?",
+    "question": "Apakah PLTMH sama dengan bendungan waduk pembangkit listrik yang besar?",
     "keywords": [
-      "edukasi wisata",
-      "pendidikan",
-      "wisata",
-      "nilai pembelajaran"
+      "sama dengan bendungan",
+      "perbedaan",
+      "bendungan besar",
+      "skala",
+      "waduk"
     ],
-    "answer": "Karena pengunjung dapat memahami energi terbarukan melalui contoh nyata yang dapat diamati langsung di lingkungan alam.",
+    "answer": "Tidak sama. Meskipun keduanya menggunakan air untuk menghasilkan listrik, PLTMH Tuk Bulus beroperasi dalam skala jauh lebih kecil (mikro), ramah lingkungan, dan dirancang khusus untuk memenuhi kebutuhan penerangan mandiri di area wisata lokal.",
     "points": 10
   },
   {
     "id": "G001",
     "category": "gamification",
-    "question": "Bagaimana cara mendapatkan poin dan lencana?",
+    "question": "Bagaimana cara mendapatkan poin dan lencana di chatbot ini?",
     "keywords": [
       "poin",
       "lencana",
       "skor",
       "level",
-      "mendapatkan poin"
+      "mendapatkan poin",
+      "badge"
     ],
-    "answer": "Anda mendapatkan poin dengan mengajukan pertanyaan yang cocok dengan FAQ dan menjawab kuis dengan benar. Poin yang tinggi akan membuka lencana yang lebih tinggi.",
+    "answer": "Anda bisa mendapatkan poin dengan mengajukan pertanyaan edukatif yang cocok dengan bank FAQ sistem serta menjawab pertanyaan kuis dengan benar. Akumulasi poin yang tinggi secara otomatis akan membuka lencana (*badge*) baru pada profil Anda.",
     "points": 5
   },
   {
     "id": "G002",
     "category": "gamification",
-    "question": "Apa yang bisa saya lakukan di chatbot ini??",
+    "question": "Apa saja yang bisa saya lakukan di chatbot eduwisata ini?",
     "keywords": [
       "fitur",
       "apa yang bisa dilakukan",
@@ -205,7 +253,37 @@
       "menu",
       "fungsi"
     ],
-    "answer": "Anda dapat bertanya tentang lokasi dan mini hydropower, membaca ringkasan pembelajaran, mengikuti kuis, serta memantau poin dan lencana Anda.",
+    "answer": "Anda dapat mencari informasi seputar rute wisata dan teknis PLTMH, membaca ringkasan materi pembelajaran, bermain kuis interaktif, serta memantau akumulasi skor poin dan lencana yang telah berhasil Anda kumpulkan.",
+    "points": 5
+  },
+  {
+    "id": "G003",
+    "category": "gamification",
+    "question": "Apakah skor poin dan lencana saya bisa hangus atau hilang?",
+    "keywords": [
+      "poin hilang",
+      "badge hilang",
+      "reset",
+      "terhapus",
+      "mengulang",
+      "simpan skor"
+    ],
+    "answer": "Poin dan lencana Anda akan tetap tersimpan dengan aman selama sesi halaman obrolan aktif. Skor akan kembali ke awal apabila Anda secara sengaja menekan tombol 'Mulai Ulang Sesi' di panel kontrol atas.",
+    "points": 5
+  },
+  {
+    "id": "G004",
+    "category": "gamification",
+    "question": "Bagaimana cara saya melihat peringkat atau total skor kuis saya?",
+    "keywords": [
+      "lihat skor",
+      "cek poin",
+      "peringkat saya",
+      "total poin",
+      "score",
+      "status lencana"
+    ],
+    "answer": "Anda dapat langsung memantau total skor poin dan tingkatan lencana Anda secara real-time pada baris metrik (*st.metric*) yang berada di bagian atas halaman utama aplikasi.",
     "points": 5
   }
 ]

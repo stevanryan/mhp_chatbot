@@ -1,142 +1,314 @@
 [
   {
     "id": "Q01",
-    "question": "Apa sumber energi utama dalam mini hydropower?",
-    "options": ["Angin", "Air mengalir", "Panas matahari", "Biomassa"],
+    "question": "Apa sumber energi utama yang menggerakkan kincir air PLTMH Tuk Bulus?",
+    "options": [
+      "Angin",
+      "Aliran air",
+      "Panas matahari",
+      "Bahan bakar bensin"
+    ],
     "correct_index": 1,
-    "explanation": "Mini hydropower menggunakan energi dari air yang mengalir untuk menghasilkan listrik."
+    "explanation": "Kincir air di Tuk Bulus berputar karena memanfaatkan energi kinetik dari aliran air yang mengalir terus-menerus."
   },
   {
     "id": "Q02",
-    "question": "Komponen mana yang berputar karena aliran air?",
-    "options": ["Baterai", "Turbine", "Panel surya", "Kontroler"],
-    "correct_index": 1,
-    "explanation": "Turbine berputar karena aliran air."
+    "question": "Komponen apa yang berputar langsung saat ditabrak oleh aliran air pancuran?",
+    "options": [
+      "Aki / Baterai",
+      "Panel surya",
+      "Kincir air (Turbin)",
+      "Kabel listrik"
+    ],
+    "correct_index": 2,
+    "explanation": "Air dari pancuran dialirkan untuk menabrak baling-baling kincir atau turbin sehingga membuatnya berputar."
   },
   {
     "id": "Q03",
-    "question": "Apa fungsi generator dalam mini hydropower?",
-    "options": ["Untuk menyimpan air", "Untuk mengubah energi mekanik menjadi listrik", "Untuk meningkatkan laju aliran", "Untuk mendinginkan turbin"],
-    "correct_index": 1,
-    "explanation": "Generator mengubah energi mekanik dari turbin menjadi energi listrik."
+    "question": "Apa fungsi utama dari generator pada sistem PLTMH?",
+    "options": [
+      "Mengubah putaran kincir menjadi energi listrik",
+      "Menampung air agar tidak meluap",
+      "Membuat air menjadi lebih jernih",
+      "Mendinginkan baling-baling kincir"
+    ],
+    "correct_index": 0,
+    "explanation": "Generator bertugas mengubah energi mekanik (putaran) dari kincir air menjadi energi listrik."
   },
   {
     "id": "Q04",
-    "question": "Faktor mana yang paling mempengaruhi output mini hydropower?",
-    "options": ["Warna air", "Laju aliran", "Kelembapan udara", "Bentuk awan"],
-    "correct_index": 1,
-    "explanation": "Laju aliran adalah salah satu faktor utama yang mempengaruhi output daya mini hydropower."
+    "question": "Besar kecilnya daya listrik PLTMH sangat dipengaruhi oleh faktor utama berikut, yaitu...",
+    "options": [
+      "Warna dan kejernihan air",
+      "Kelembapan udara di sekitar kolam",
+      "Bentuk awan di langit",
+      "Debit air dan tinggi jatuh air (head)"
+    ],
+    "correct_index": 3,
+    "explanation": "Debit air (volume & kecepatan) serta head (tinggi jatuh air) adalah faktor alam paling utama yang menentukan kekuatan listrik."
   },
   {
     "id": "Q05",
-    "question": "Mengapa mini hydropower dianggap energi terbarukan?",
-    "options": ["Karena menggunakan bahan bakar", "Karena menggunakan air mengalir", "Karena menggunakan baterai", "Karena menggunakan plastik"],
+    "question": "Mengapa listrik dari PLTMH Tuk Bulus disebut energi terbarukan?",
+    "options": [
+      "Karena menggunakan solar",
+      "Because memanfaatkan aliran air alami yang tidak akan habis",
+      "Karena bergantung pada baterai plastik",
+      "Karena menghasilkan asap yang ramah lingkungan"
+    ],
     "correct_index": 1,
-    "explanation": "Mini hydropower dianggap energi terbarukan karena menggunakan air yang terus mengalir, yang merupakan sumber daya yang tidak habis."
+    "explanation": "PLTMH memanfaatkan air mengalir yang terus diperbarui oleh siklus alam, sehingga tidak akan pernah habis."
   },
   {
     "id": "Q06",
-    "question": "Apa yang harus dilakukan pengunjung di dekat peralatan teknis?",
-    "options": ["Sentuh semua bagian untuk belajar lebih cepat", "Tetap jauh kecuali diizinkan", "Duduk di peralatan", "Pindahkan kabel jika diperlukan"],
-    "correct_index": 1,
-    "explanation": "Pengunjung harus menjaga jarak aman dari peralatan teknis kecuali diizinkan oleh staf."
+    "question": "Apa yang harus dilakukan pengunjung saat berada di dekat peralatan teknis kincir air?",
+    "options": [
+      "Menjaga jarak aman dan mematuhi pembatas",
+      "Menyentuh tombol untuk mencoba",
+      "Menaiki kincir air untuk berfoto",
+      "Memindahkan kabel yang melintang"
+    ],
+    "correct_index": 0,
+    "explanation": "Demi keselamatan bersama, pengunjung wajib mematuhi batas aman dan tidak sembarangan menyentuh alat teknis."
   },
   {
     "id": "Q07",
-    "question": "Mini hydropower biasanya dirancang untuk ...",
-    "options": ["Hanya kota besar", "Kebutuhan listrik lokal atau skala kecil", "Pesawat terbang", "Pengiriman laut"],
-    "correct_index": 1,
-    "explanation": "Mini hydropower biasanya digunakan untuk pembangkit listrik lokal atau skala kecil."
+    "question": "Apa perbedaan utama PLTMH dengan bendungan pembangkit listrik raksasa?",
+    "options": [
+      "PLTMH butuh area yang jauh lebih luas",
+      "PLTMH merusak ekosistem air lokal",
+      "PLTMH beroperasi dalam skala kecil untuk kebutuhan area sekitar",
+      "PLTMH hanya bisa menggunakan air laut"
+    ],
+    "correct_index": 2,
+    "explanation": "PLTMH didesain khusus dalam skala kecil (mikro) untuk memanfaatkan aliran air lokal tanpa membutuhkan bendungan raksasa."
   },
   {
     "id": "Q08",
-    "question": "Apa yang membuat situs wisata ini edukatif?",
-    "options": ["Hanya memiliki kios makanan", "Menggabungkan alam dengan pembelajaran mini hydropower", "Tidak memiliki informasi sama sekali", "Berada di dalam ruangan"],
+    "question": "Mengapa Tuk Bulus sangat cocok dijadikan tempat wisata edukasi energi?",
+    "options": [
+      "Karena areanya tertutup dari masyarakat",
+      "Karena menggabungkan wisata alam dengan pembelajaran teknologi nyata",
+      "Karena tidak ada petugas yang menjaga",
+      "Karena hanya berfokus pada warung kuliner"
+    ],
     "correct_index": 1,
-    "explanation": "Situs ini mendukung pembelajaran karena pengunjung dapat melihat konsep energi terbarukan dalam lingkungan alami yang nyata."
+    "explanation": "Pengunjung bisa rekreasi menikmati kesegaran alam sekaligus melihat langsung bagaimana air diubah menjadi listrik."
   },
   {
     "id": "Q09",
-    "question": "Apa salah satu manfaat gamifikasi dalam chatbot ini?",
-    "options": ["itu menghapus semua konten pembelajaran", "dapat meningkatkan keterlibatan dan motivasi", "menghentikan pengguna dari bertanya", "menggantikan internet"],
-    "correct_index": 1,
-    "explanation": "Nilai, lencana, dan kuis membantu menjaga keterlibatan dan minat pengguna dalam belajar."
+    "question": "Apa keuntungan mengumpulkan poin dan lencana di chatbot eduwisata ini?",
+    "options": [
+      "Membuat kuis berjalan lebih lambat",
+      "Bisa ditukar dengan uang tunai di loket",
+      "Meningkatkan motivasi dan keseruan dalam belajar",
+      "Menghapus materi yang sudah dibaca"
+    ],
+    "correct_index": 2,
+    "explanation": "Fitur gamifikasi seperti poin dan lencana dirancang untuk memotivasi pengunjung agar lebih aktif belajar dengan cara yang seru."
   },
   {
     "id": "Q10",
-    "question": "Bagaimana pengunjung dapat membantu melindungi situs wisata?",
-    "options": ["Dengan membuang sampah sembarangan", "Dengan menjaga kebersihan dan mengikuti aturan", "Dengan mengabaikan tanda-tanda", "Dengan melangkahi pembatas"],
+    "question": "Bagaimana cara terbaik pengunjung dalam membantu melestarikan area eduwisata Tuk Bulus?",
+    "options": [
+      "Membuang sampah plastik ke kolam pemandian",
+      "Menjaga kebersihan air dan tidak merusak fasilitas sekitar",
+      "Mengabaikan papan petunjuk arah",
+      "Berenang di dekat komponen kincir aktif"
+    ],
     "correct_index": 1,
-    "explanation": "Perilaku pengunjung yang bertanggung jawab membantu melindungi lingkungan dan fasilitas pembelajaran."
+    "explanation": "Menjaga kebersihan dan mengikuti aturan adalah kontribusi nyata pengunjung dalam melestarikan lingkungan wisata."
   },
   {
     "id": "Q11",
-    "question": "Energi air dalam mini hydropower pertama-tama diubah menjadi energi apa?",
-    "options": ["Energi kimia", "Energi mekanik", "Energi nuklir", "Energi panas bumi"],
-    "correct_index": 1,
-    "explanation": "Aliran air memutar turbin sehingga menghasilkan energi mekanik sebelum diubah menjadi listrik oleh generator."
+    "question": "Sebelum menjadi energi listrik, energi dari aliran air pertama kali diubah kincir menjadi energi...",
+    "options": [
+      "Kimia",
+      "Nuklir",
+      "Panas bumi",
+      "Mekanik (Putaran)"
+    ],
+    "correct_index": 3,
+    "explanation": "Aliran air yang menabrak kincir menghasilkan gerakan berputar, gerakan inilah yang disebut energi mekanik."
   },
   {
     "id": "Q12",
-    "question": "Apa peran turbin dalam sistem mini hydropower?",
-    "options": ["Menyimpan listrik", "Mengubah energi air menjadi energi mekanik", "Mengatur suhu air", "Mengalirkan kabel listrik"],
-    "correct_index": 1,
-    "explanation": "Turbin berfungsi mengubah energi kinetik dari air yang mengalir menjadi energi mekanik berupa putaran."
+    "question": "Apa peran utama kincir air atau turbin dalam sistem PLTMH?",
+    "options": [
+      "Mengubah energi air menjadi energi mekanik (putaran)",
+      "Menyimpan daya listrik cadangan",
+      "Mengatur suhu kolam agar tetap dingin",
+      "Menyaring lumut dari pancuran"
+    ],
+    "correct_index": 0,
+    "explanation": "Turbin kincir berfungsi menangkap gaya dorong air dan mengubahnya menjadi gerakan putar."
   },
   {
     "id": "Q13",
-    "question": "Mengapa aliran air yang stabil penting dalam mini hydropower?",
-    "options": ["Agar warna air tetap jernih", "Agar listrik yang dihasilkan stabil", "Agar wisatawan lebih banyak", "Agar kolam lebih dalam"],
+    "question": "Mengapa aliran air yang stabil sangat penting bagi operasional PLTMH?",
+    "options": [
+      "Agar warna air tidak berubah cokelat",
+      "Agar pasokan listrik yang dihasilkan tetap stabil dan konsisten",
+      "Agar jumlah wisatawan meningkat",
+      "Agar kolam pemandian tidak kering"
+    ],
     "correct_index": 1,
-    "explanation": "Aliran air yang stabil membantu menghasilkan listrik yang stabil dan konsisten."
+    "explanation": "Debit air yang stabil menjamin turbin berputar dengan kecepatan konstan, sehingga listrik tidak naik-turun."
   },
   {
     "id": "Q14",
-    "question": "Mini hydropower termasuk dalam kategori energi ...",
-    "options": ["Tak terbarukan", "Terbarukan", "Fosil", "Buatan"],
-    "correct_index": 1,
-    "explanation": "Mini hydropower termasuk energi terbarukan karena memanfaatkan sumber daya air yang terus diperbarui secara alami."
+    "question": "PLTMH Tuk Bulus termasuk dalam pemanfaatan kategori energi...",
+    "options": [
+      "Fosil",
+      "Tak terbarukan",
+      "Terbarukan",
+      "Buatan manusia"
+    ],
+    "correct_index": 2,
+    "explanation": "PLTMH menggunakan air alami sebagai penggerak, yang termasuk dalam kelompok energi terbarukan."
   },
   {
     "id": "Q15",
-    "question": "Apa manfaat edukatif dari melihat sistem mini hydropower secara langsung?",
-    "options": ["Hanya untuk hiburan", "Memahami konsep energi terbarukan secara nyata", "Menggantikan buku pelajaran", "Mengurangi kebutuhan listrik"],
-    "correct_index": 1,
-    "explanation": "Melihat langsung sistem MHP membantu pengunjung memahami konsep energi terbarukan secara lebih konkret."
+    "question": "Apa manfaat utama melihat langsung sistem PLTMH saat berwisata?",
+    "options": [
+      "Membantu memahami konsep energi terbarukan secara lebih nyata",
+      "Sebagai syarat wajib untuk pulang",
+      "Menggantikan seluruh materi sekolah",
+      "Menurunkan biaya kuota internet"
+    ],
+    "correct_index": 0,
+    "explanation": "Melihat alat kerja secara langsung memberikan pengalaman konkret yang mempermudah pemahaman teori energi terbarukan."
   },
   {
     "id": "Q16",
-    "question": "Dalam chatbot edukasi, kuis digunakan untuk ...",
-    "options": ["Mengurangi informasi", "Mengukur pemahaman pengguna", "Menghapus skor", "Menghentikan percakapan"],
-    "correct_index": 1,
-    "explanation": "Kuis dalam chatbot membantu mengukur sejauh mana pengguna memahami materi yang diberikan."
+    "question": "Di dalam aplikasi eduwisata ini, fitur Kuis digunakan untuk...",
+    "options": [
+      "Menghapus riwayat obrolan",
+      "Mengurangi poin yang sudah didapat",
+      "Mengukur tingkat pemahaman pengunjung",
+      "Menutup aplikasi secara otomatis"
+    ],
+    "correct_index": 2,
+    "explanation": "Kuis berfungsi sebagai alat evaluasi interaktif untuk mengetahui sejauh mana pengunjung memahami materi belajar."
   },
   {
     "id": "Q17",
-    "question": "Apa tujuan pemberian poin dalam sistem gamifikasi?",
-    "options": ["Sebagai hiasan", "Meningkatkan motivasi belajar", "Mengurangi pertanyaan", "Menghapus fitur edukasi"],
-    "correct_index": 1,
-    "explanation": "Poin diberikan untuk meningkatkan motivasi dan keterlibatan pengguna dalam proses pembelajaran."
+    "question": "Apa tujuan utama diterapkannya sistem poin dan lencana?",
+    "options": [
+      "Meningkatkan keterlibatan dan motivasi belajar pengguna",
+      "Sebagai hiasan layar saja",
+      "Untuk membatasi jumlah pertanyaan",
+      "Menghapus fitur chat robot"
+    ],
+    "correct_index": 0,
+    "explanation": "Gamifikasi terbukti efektif meningkatkan fokus dan minat belajar pengguna lewat tantangan skor."
   },
   {
     "id": "Q18",
-    "question": "Apa yang terjadi jika laju aliran air meningkat?",
-    "options": ["Turbin berhenti", "Potensi daya yang dihasilkan meningkat", "Generator rusak otomatis", "Lampu padam"],
+    "question": "Apa yang terjadi pada sistem generator jika debit air tiba-tiba meningkat?",
+    "options": [
+      "Kincir langsung mengunci",
+      "Potensi daya listrik yang dihasilkan akan meningkat",
+      "Generator mati secara otomatis",
+      "Aliran air berbalik arah"
+    ],
     "correct_index": 1,
-    "explanation": "Semakin besar laju aliran air, semakin besar potensi energi yang dapat dihasilkan."
+    "explanation": "Meningkatnya debit air membuat dorongan pada kincir semakin kuat, sehingga putaran generator lebih cepat dan daya listrik naik."
   },
   {
     "id": "Q19",
-    "question": "Mengapa mini hydropower cocok untuk desa wisata?",
-    "options": ["Membutuhkan bahan bakar mahal", "Skalanya kecil dan ramah lingkungan", "Menghasilkan polusi tinggi", "Memerlukan gedung besar"],
-    "correct_index": 1,
-    "explanation": "Mini hydropower cocok untuk desa wisata karena skalanya kecil, ramah lingkungan, dan sesuai untuk kebutuhan lokal."
+    "question": "Mengapa PLTMH sangat cocok diterapkan di kawasan wisata pedesaan seperti Tegal Balong?",
+    "options": [
+      "Karena membutuhkan bahan bakar instan",
+      "Karena menghasilkan tingkat polusi yang tinggi",
+      "Karena skalanya kecil, ramah lingkungan, dan sesuai kebutuhan lokal",
+      "Karena memerlukan gedung bertingkat"
+    ],
+    "correct_index": 2,
+    "explanation": "PLTMH tidak merusak lanskap alam pedesaan, bebas emisi, dan pas untuk menerangi fasilitas wisata lokal."
   },
   {
     "id": "Q20",
-    "question": "Apa tujuan utama dari wisata edukasi mini hydropower?",
-    "options": ["Hanya menghasilkan listrik", "Meningkatkan pemahaman tentang energi terbarukan", "Mengurangi jumlah pengunjung", "Mengganti pembangkit besar"],
+    "question": "Apa visi utama dari pembuatan pusat Edu-Wisata energi di Tuk Bulus?",
+    "options": [
+      "Menyaingi pembangkit listrik kota",
+      "Meningkatkan kesadaran masyarakat tentang pentingnya energi terbarukan",
+      "Membatasi jumlah wisatawan yang datang",
+      "Menjual komponen kincir air secara bebas"
+    ],
     "correct_index": 1,
-    "explanation": "Wisata edukasi bertujuan untuk meningkatkan kesadaran dan pemahaman tentang energi terbarukan melalui pengalaman langsung."
+    "explanation": "Eduwisata bertujuan mengedukasi masyarakat luas mengenai pemanfaatan energi bersih lewat contoh riil di alam."
+  },
+  {
+    "id": "Q21",
+    "question": "Apa yang terjadi pada operasional PLTMH Tuk Bulus ketika musim kemarau tiba?",
+    "options": [
+      "PLTMH mati total karena air kering",
+      "Kincir dirubah menjadi bertenaga angin",
+      "Kincir tetap berputar karena air Tuk Bulus mengalir sepanjang tahun",
+      "Generator diganti menggunakan bensin"
+    ],
+    "correct_index": 2,
+    "explanation": "Mata air Pancuran Tuk Bulus memiliki keistimewaan airnya stabil dan tidak pernah susut sepanjang tahun, bahkan saat kemarau."
+  },
+  {
+    "id": "Q22",
+    "question": "Siapa pihak utama yang menginisiasi pengolahan potensi alam Tuk Bulus menjadi area eduwisata?",
+    "options": [
+      "Kelompok Sadar Wisata (Pokdarwis) bersama warga setempat",
+      "Investor asing dari luar negeri",
+      "Perusahaan listrik swasta",
+      "Pihak pengelola hotel berbintang"
+    ],
+    "correct_index": 0,
+    "explanation": "Pengembangan area pemandian dan edukasi energi ini merupakan hasil kerja keras swadaya dari Pokdarwis dan warga Dusun Tegal Balong."
+  },
+  {
+    "id": "Q23",
+    "question": "Mengapa air dari pancuran tidak boleh terhalang oleh sampah ranting atau plastik?",
+    "options": [
+      "Dapat mengubah warna air menjadi merah",
+      "Dapat menyumbat aliran air, menurunkan debit, dan mengganggu putaran kincir",
+      "Dapat membuat generator menghasilkan listrik terlalu besar",
+      "Hanya merusak pemandangan foto saja"
+    ],
+    "correct_index": 1,
+    "explanation": "Sampah padat dapat menghambat volume (debit) air yang jatuh menabrak turbin, sehingga putaran kincir melambat dan produksi listrik menurun."
+  },
+  {
+    "id": "Q24",
+    "question": "Selain melihat kincir air PLTMH, aktivitas rekreasi apa lagi yang menjadi daya tarik utama di Tuk Bulus?",
+    "options": [
+      "Bermain jet ski di danau",
+      "Mendaki tebing gunung",
+      "Bersantai dan berenang di kolam pemandian alami",
+      "Menonton bioskop mini"
+    ],
+    "correct_index": 2,
+    "explanation": "Potensi awal Tuk Bulus yang dikembangkan oleh warga adalah area kolam pemandian alami yang kemudian dipadukan dengan eduwisata energi."
+  },
+  {
+    "id": "Q25",
+    "question": "Bagaimana cara sistem mengukur bahwa kamu sudah menjadi 'Pahlawan Energi' di chatbot ini?",
+    "options": [
+      "Dengan mengumpulkan skor poin tertinggi melalui kuis dan keaktifan bertanya",
+      "Dengan membayar biaya langganan aplikasi",
+      "Dengan datang ke lokasi setiap jam 8 pagi",
+      "Dengan membawa pulang komponen kincir air"
+    ],
+    "correct_index": 0,
+    "explanation": "Sistem gamifikasi chatbot memberikan poin dari keaktifan pengguna membaca materi, bertanya di FAQ, dan ketepatan menjawab kuis."
+  },
+  {
+    "id": "Q26",
+    "question": "Apa peran utama komponen 'Baling-Baling Kincir' dalam merespons aliran air?",
+    "options": [
+      "Menyimpan listrik ke dalam sirkuit",
+      "Menyaring air agar bersih dari lumut",
+      "Menaikkan suhu air pancuran",
+      "Menangkap dorongan air untuk diubah menjadi gerakan putar (energi mekanik)"
+    ],
+    "correct_index": 3,
+    "explanation": "Baling-baling kincir atau turbin adalah bagian pertama yang menerima gaya dorong air untuk memicu energi mekanik berupa putaran."
   }
 ]
