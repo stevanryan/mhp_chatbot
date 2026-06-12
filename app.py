@@ -116,8 +116,8 @@ def load_cached_json_data(faq_file_path, quiz_file_path):
 
 # [UPDATE] Menambahkan fungsi caching untuk inisialisasi model NLP (Mencegah Sastrawi dan TF-IDF berjalan berulang-ulang)
 @st.cache_resource
-def get_cached_matcher(_faq_items):
-    return FAQMatcher(faq_items=_faq_items, threshold=0.30)
+def get_cached_matcher(faq_data_input):
+    return FAQMatcher(faq_items=faq_data_input, threshold=0.30)
 
 # [UPDATE] Memanggil data dan model menggunakan fungsi cache yang baru dibuat
 faq_items, quiz_items = load_cached_json_data(FAQ_PATH, QUIZ_PATH)
