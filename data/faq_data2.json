@@ -110,6 +110,65 @@
     "points": 5
   },
   {
+    "id": "W008",
+    "category": "tourism",
+    "question": "Di mana lokasi Wisata Edukasi Tuk Bulus Tegal Balong?",
+    "keywords": [
+      "lokasi",
+      "alamat",
+      "dimana",
+      "letak",
+      "tuk bulus",
+      "tegal balong",
+      "alamat wisata"
+    ],
+    "answer": "Wisata Edukasi Tuk Bulus berada di RT 05 RW 18 Tegal, Balong, Bimomartani, Kecamatan Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584.",
+    "points": 5
+  },
+  {
+    "id": "W009",
+    "category": "tourism",
+    "question": "Apa yang dapat dipelajari pengunjung di Wisata Edukasi Tuk Bulus?",
+    "keywords": [
+      "belajar",
+      "materi",
+      "edukasi",
+      "apa yang dipelajari",
+      "pengetahuan",
+      "wisata edukasi"
+    ],
+    "answer": "Pengunjung dapat mempelajari energi terbarukan, cara kerja PLTMH, fungsi turbin dan generator, pemanfaatan sumber daya air, serta pentingnya menjaga lingkungan secara berkelanjutan.",
+    "points": 10
+  },
+  {
+    "id": "W010",
+    "category": "tourism",
+    "question": "Mengapa Tuk Bulus menjadi destinasi wisata edukasi yang menarik?",
+    "keywords": [
+      "menarik",
+      "keunikan",
+      "daya tarik",
+      "eduwisata",
+      "wisata edukasi"
+    ],
+    "answer": "Tuk Bulus menggabungkan wisata alam, kolam pemandian alami, dan teknologi PLTMH sehingga pengunjung dapat berwisata sambil belajar tentang energi terbarukan secara langsung.",
+    "points": 10
+  },
+  {
+    "id": "W011",
+    "category": "tourism",
+    "question": "Apakah lokasi ini cocok untuk kunjungan pelajar dan mahasiswa?",
+    "keywords": [
+      "pelajar",
+      "mahasiswa",
+      "studi",
+      "kunjungan edukasi",
+      "observasi"
+    ],
+    "answer": "Ya. Lokasi ini sangat cocok untuk kunjungan edukasi karena menyediakan contoh nyata pemanfaatan energi terbarukan yang dapat diamati langsung oleh siswa maupun mahasiswa.",
+    "points": 10
+  },
+  {
     "id": "M001",
     "category": "mhp",
     "question": "Apa itu PLTMH Tuk Bulus?",
@@ -225,6 +284,113 @@
       "waduk"
     ],
     "answer": "Tidak sama. Meskipun keduanya menggunakan air untuk menghasilkan listrik, PLTMH Tuk Bulus beroperasi dalam skala jauh lebih kecil (mikro), ramah lingkungan, dan dirancang khusus untuk memenuhi kebutuhan penerangan mandiri di area wisata lokal.",
+    "points": 10
+  },
+  {
+    "id": "M009",
+    "category": "mhp",
+    "question": "Bagaimana proses lengkap PLTMH menghasilkan listrik?",
+    "keywords": [
+      "proses lengkap",
+      "cara kerja lengkap",
+      "alur listrik",
+      "mekanisme listrik",
+      "proses pembangkit"
+    ],
+    "answer": "Air mengalir dari sumber mata air menuju kincir atau turbin. Putaran turbin diteruskan melalui sistem transmisi menuju generator. Generator kemudian mengubah energi mekanik menjadi energi listrik yang dapat digunakan untuk menyalakan lampu dan kebutuhan listrik lainnya.",
+    "points": 15
+  },
+  {
+    "id": "M010",
+    "category": "mhp",
+    "question": "Apa saja komponen utama PLTMH Tuk Bulus?",
+    "keywords": [
+      "komponen",
+      "bagian",
+      "alat",
+      "perangkat",
+      "sistem pltmh"
+    ],
+    "answer": "Komponen utama PLTMH terdiri dari sumber air, saluran air, turbin atau kincir air, sistem transmisi, generator, kabel distribusi, dan beban listrik seperti lampu penerangan.",
+    "points": 10
+  },
+  {
+    "id": "M011",
+    "category": "mhp",
+    "question": "Mengapa PLTMH termasuk energi terbarukan?",
+    "keywords": [
+      "energi terbarukan",
+      "renewable",
+      "ramah lingkungan",
+      "berkelanjutan"
+    ],
+    "answer": "PLTMH memanfaatkan energi dari aliran air yang terus diperbarui oleh siklus hidrologi alami sehingga sumber energinya tidak habis dan lebih ramah lingkungan dibanding bahan bakar fosil.",
+    "points": 10
+  },
+  {
+    "id": "M012",
+    "category": "mhp",
+    "question": "Apa manfaat PLTMH bagi masyarakat sekitar?",
+    "keywords": [
+      "manfaat",
+      "masyarakat",
+      "warga",
+      "keuntungan",
+      "lingkungan"
+    ],
+    "answer": "PLTMH dapat menyediakan energi listrik ramah lingkungan, mendukung kegiatan edukasi, meningkatkan kesadaran masyarakat terhadap energi terbarukan, dan menjadi daya tarik wisata lokal.",
+    "points": 10
+  },
+  {
+    "id": "M013",
+    "category": "mhp",
+    "question": "Energi apa saja yang mengalami perubahan dalam PLTMH?",
+    "keywords": [
+      "konversi energi",
+      "perubahan energi",
+      "energi mekanik",
+      "energi listrik"
+    ],
+    "answer": "Energi air diubah menjadi energi mekanik ketika memutar turbin. Selanjutnya energi mekanik tersebut diubah oleh generator menjadi energi listrik.",
+    "points": 10
+  },
+  {
+    "id": "M014",
+    "category": "mhp",
+    "question": "Mengapa debit air penting dalam PLTMH?",
+    "keywords": [
+      "debit air",
+      "aliran air",
+      "volume air",
+      "pengaruh debit"
+    ],
+    "answer": "Semakin besar dan stabil debit air, semakin besar potensi energi yang dapat dihasilkan sehingga listrik yang dihasilkan juga lebih stabil.",
+    "points": 10
+  },
+  {
+    "id": "M015",
+    "category": "mhp",
+    "question": "Apa perbedaan PLTMH dengan pembangkit listrik berbahan bakar fosil?",
+    "keywords": [
+      "fosil",
+      "bahan bakar",
+      "perbedaan pembangkit",
+      "ramah lingkungan"
+    ],
+    "answer": "PLTMH menggunakan energi air yang terbarukan dan tidak menghasilkan emisi gas buang, sedangkan pembangkit berbahan bakar fosil memerlukan bahan bakar yang dapat habis dan menghasilkan polusi.",
+    "points": 10
+  },
+  {
+    "id": "M016",
+    "category": "mhp",
+    "question": "Mengapa PLTMH cocok diterapkan di desa wisata?",
+    "keywords": [
+      "desa wisata",
+      "cocok",
+      "lokal",
+      "lingkungan"
+    ],
+    "answer": "PLTMH cocok diterapkan di desa wisata karena skalanya kecil, memanfaatkan sumber daya lokal, ramah lingkungan, dan dapat menjadi sarana edukasi bagi pengunjung.",
     "points": 10
   },
   {
