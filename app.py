@@ -415,7 +415,8 @@ elif page_selection == "🧠 Kuis Interaktif":
 
                     if q["id"] not in st.session_state.quiz_answered_ids:
                         if is_correct:
-                            add_points(20)
+                            # add_points(20)
+                            add_points(5)
                             st.session_state.quiz_score += 1
                         st.session_state.quiz_answered_ids.add(q["id"])
 
