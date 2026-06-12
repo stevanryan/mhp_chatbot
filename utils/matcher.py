@@ -24,16 +24,37 @@ class FAQMatcher:
         
         # Kamus Sinonim & Typo (Bisa ditambah sesuai kebutuhan)
         self.synonyms = {
-            "gimana": "bagaimana",
-            "bikin": "buat",
-            "plmt": "pltmh",
-            "pltm": "pltmh",
-            "mikrohidro": "mikro hidro",
-            "aturan": "syarat",
-            "tempat": "lokasi",
-            "buka": "jam",
-        }
+        "gimana": "bagaimana",
+        "gmn": "bagaimana",
+        "bikin": "buat",
+        "plmt": "pltmh",
+        "pltm": "pltmh",
+        "mikrohidro": "mikro hidro",
 
+        "alamatnya": "alamat",
+        "alamat": "lokasi",
+        "dimana": "lokasi",
+        "letak": "lokasi",
+
+        "berenang": "mandi",
+        "ciblon": "mandi",
+
+        "lampu": "listrik",
+        "energi": "listrik",
+
+        "fungsi": "peran",
+        "guna": "peran",
+
+        "debit": "aliran air",
+        "arus": "aliran air",
+
+        "jam": "operasional",
+        "buka": "operasional",
+        "tutup": "operasional",
+
+        "mahasiswa": "pelajar",
+        "siswa": "pelajar"
+}
         self.documents = [self._build_doc(item) for item in self.faq_items]
         self.X = self.vectorizer.fit_transform(self.documents)
 
@@ -55,11 +76,15 @@ class FAQMatcher:
         
         return text
 
-    def _build_doc(self, item: Dict) -> str:
+    def _build_doc(self, item):
         question = item.get("question", "")
         keywords = " ".join(item.get("keywords", []))
+        answer = item.get("answer", "")
         category = item.get("category", "")
-        return self._clean_text(f"{question} {keywords} {category}")
+
+        return self._clean_text(
+            f"{question} {question} {keywords} {keywords} {answer} {category}"
+        )
 
     def _keyword_fallback(self, query: str) -> Dict:
         q = self._clean_text(query)
