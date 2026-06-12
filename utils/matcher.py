@@ -1,143 +1,119 @@
-import re
-from typing import Dict, List
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from Sastrawi.Stemmer.StemmerFactory import StemmerFactory # Tambahan untuk Stemming
+
+try:
+    from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+
+    factory = StemmerFactory()
+    stemmer = factory.create_stemmer()
+
+    def preprocess(text):
+        return stemmer.stem(text.lower())
+except:
+    def preprocess(text):
+        return text.lower()
+
 
 class FAQMatcher:
-    def __init__(self, faq_items: List[Dict], threshold: float = 0.30):
+    def __init__(self, faq_items, threshold=0.30):
         self.faq_items = faq_items
         self.threshold = threshold
-        self.vectorizer = TfidfVectorizer(
-            lowercase=True,
-            ngram_range=(1, 2),
-            use_idf=True,
-            smooth_idf=True,
-            norm="l2",
-            min_df=1,
-        )
-        
-        # Inisialisasi Sastrawi Stemmer
-        factory = StemmerFactory()
-        self.stemmer = factory.create_stemmer()
-        
-        # Kamus Sinonim & Typo (Bisa ditambah sesuai kebutuhan)
-        self.synonyms = {
-        "gimana": "bagaimana",
-        "gmn": "bagaimana",
-        "bikin": "buat",
-        "plmt": "pltmh",
-        "pltm": "pltmh",
-        "mikrohidro": "mikro hidro",
 
-        "alamatnya": "alamat",
-        "alamat": "lokasi",
-        "dimana": "lokasi",
-        "letak": "lokasi",
+        # Gabungkan question + keywords agar TF-IDF lebih akurat
+        self.documents = []
 
-        "berenang": "mandi",
-        "ciblon": "mandi",
+        for faq in faq_items:
+            keywords = " ".join(faq.get("keywords", []))
 
-        "lampu": "listrik",
-        "energi": "listrik",
+            document = (
+                faq.get("question", "")
+                + " "
+                + keywords
+            )
 
-        "fungsi": "peran",
-        "guna": "peran",
+            self.documents.append(preprocess(document))
 
-        "debit": "aliran air",
-        "arus": "aliran air",
+        self.vectorizer = TfidfVectorizer()
+        self.faq_matrix = self.vectorizer.fit_transform(self.documents)
 
-        "jam": "operasional",
-        "buka": "operasional",
-        "tutup": "operasional",
+    def search(self, query):
+        query_clean = preprocess(query)
 
-        "mahasiswa": "pelajar",
-        "siswa": "pelajar"
-}
-        self.documents = [self._build_doc(item) for item in self.faq_items]
-        self.X = self.vectorizer.fit_transform(self.documents)
+        # ==================================================
+        # PRIORITAS 1 : KEYWORD MATCHING
+        # ==================================================
 
-    def _clean_text(self, text: str) -> str:
-        # 1. Lowercase dan bersihkan spasi
-        text = text.lower().strip()
-        
-        # 2. Hapus tanda baca
-        text = re.sub(r"[^\w\s]", " ", text)
-        text = re.sub(r"\s+", " ", text)
-        
-        # 3. Ganti kata menggunakan kamus sinonim/typo
-        words = text.split()
-        replaced_words = [self.synonyms.get(w, w) for w in words]
-        text = " ".join(replaced_words)
-        
-        # 4. Terapkan stemming (menghapus imbuhan, misal: 'wisatawan' -> 'wisata')
-        text = self.stemmer.stem(text)
-        
-        return text
+        keyword_scores = []
 
-    def _build_doc(self, item):
-        question = item.get("question", "")
-        keywords = " ".join(item.get("keywords", []))
-        answer = item.get("answer", "")
-        category = item.get("category", "")
+        for faq in self.faq_items:
+            score = 0
 
-        return self._clean_text(
-            f"{question} {question} {keywords} {keywords} {answer} {category}"
-        )
+            keywords = faq.get("keywords", [])
 
-    def _keyword_fallback(self, query: str) -> Dict:
-        q = self._clean_text(query)
-        best_item = None
-        best_hits = 0
-        for item in self.faq_items:
-            # Perlu diperhatikan: keyword dari FAQ juga sebaiknya bersih dari imbuhan
-            hits = sum(1 for kw in item.get("keywords", []) if self._clean_text(kw) in q)
-            if hits > best_hits:
-                best_hits = hits
-                best_item = item
-                
-        if best_item and best_hits > 0:
+            for keyword in keywords:
+                keyword_clean = preprocess(keyword)
+
+                # exact phrase
+                if keyword_clean in query_clean:
+                    score += 3
+
+                # per kata
+                for word in keyword_clean.split():
+                    if word in query_clean.split():
+                        score += 1
+
+            keyword_scores.append(score)
+
+        max_keyword_score = max(keyword_scores)
+
+        if max_keyword_score > 0:
+            best_idx = keyword_scores.index(max_keyword_score)
+            faq = self.faq_items[best_idx]
+
             return {
-                "id": best_item["id"],
-                "answer": best_item["answer"],
-                "score": float(best_hits),
-                "points": best_item.get("points", 5),
-                "match_type": "keyword",
-            }
-            
-        return {
-            "id": None,
-            "answer": "Maaf, saya tidak dapat menemukan jawaban yang sesuai. Silakan coba kata kunci lain seperti jam buka, fasilitas, PLTMH, turbin, generator, atau kuis.",
-            "score": 0.0,
-            "points": 0,
-            "match_type": "fallback",
-        }
-
-    def search(self, query: str) -> Dict:
-        q = self._clean_text(query)
-        if not q:
-            return {
-                "id": None,
-                "answer": "Silakan ketik pertanyaan terlebih dahulu.",
-                "score": 0.0,
-                "points": 0,
-                "match_type": "empty",
+                "id": faq["id"],
+                "answer": faq["answer"],
+                "points": faq.get("points", 5),
+                "score": float(max_keyword_score),
+                "match_type": "keyword"
             }
 
-        q_vec = self.vectorizer.transform([q])
-        sims = cosine_similarity(q_vec, self.X)[0]
-        best_idx = int(sims.argmax())
-        best_score = float(sims[best_idx])
+        # ==================================================
+        # PRIORITAS 2 : TF-IDF
+        # ==================================================
+
+        query_vector = self.vectorizer.transform([query_clean])
+
+        similarities = cosine_similarity(
+            query_vector,
+            self.faq_matrix
+        ).flatten()
+
+        best_idx = similarities.argmax()
+        best_score = similarities[best_idx]
 
         if best_score >= self.threshold:
-            item = self.faq_items[best_idx]
+            faq = self.faq_items[best_idx]
+
             return {
-                "id": item["id"],
-                "answer": item["answer"],
-                "score": round(best_score, 4),
-                "points": item.get("points", 5),
-                "match_type": "similarity",
+                "id": faq["id"],
+                "answer": faq["answer"],
+                "points": faq.get("points", 5),
+                "score": float(best_score),
+                "match_type": "tfidf"
             }
 
-        return self._keyword_fallback(query) 
+        # ==================================================
+        # TIDAK ADA YANG COCOK
+        # ==================================================
+
+        return {
+            "id": None,
+            "answer": (
+                "Maaf, saya belum menemukan jawaban yang sesuai. "
+                "Silakan coba gunakan kata lain atau lihat contoh pertanyaan yang tersedia."
+            ),
+            "points": 0,
+            "score": 0.0,
+            "match_type": "fallback"
+        }
